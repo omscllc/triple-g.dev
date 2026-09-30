@@ -213,9 +213,8 @@ CRUSH.md
 /.cache_ggshield
 /web/libraries
 /web/assets
+!/web/assets/triple-g-*.png
 /web/themes/custom/triple_g/css/triple_g.post.min.css
 
 .lighthouseci/
 .lighthouseci/* # ignore everything in the folder
-
-
