@@ -297,6 +297,7 @@ display:
           entity_field: uid
           plugin_id: standard
           required: true
+      show_admin_links: false
       use_more: false
       use_more_always: false
       use_more_text: More
@@ -304,7 +305,6 @@ display:
       link_url: ''
       header: {  }
       footer: {  }
-      show_admin_links: false
       display_extenders: {  }
     cache_metadata:
       max-age: -1

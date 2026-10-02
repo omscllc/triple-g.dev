@@ -16,6 +16,14 @@ if (file_exists($env_file)) {
 ini_set('memory_limit', '512M');
 
 $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
+$settings['container_yamls'][] = $app_root . '/modules/contrib/redis/redis.services.yml';
+$settings['container_yamls'][] = $app_root . '/modules/contrib/redis/example.services.yml';
+
+$settings['redis.connection']['interface'] = 'Predis';
+$settings['redis.connection']['host'] = !empty($_ENV['VALKEY_HOST']) ? $_ENV['VALKEY_HOST'] : 'valkey';
+$settings['redis.connection']['port'] = !empty($_ENV['VALKEY_PORT']) ? (int) $_ENV['VALKEY_PORT'] : 6379;
+$settings['cache']['default'] = 'cache.backend.redis';
+$settings['cache_prefix']['default'] = !empty($_ENV['VALKEY_CACHE_PREFIX']) ? $_ENV['VALKEY_CACHE_PREFIX'] : 'triple_g_dev_';
 
 $settings['file_scan_ignore_directories'] = [
   'node_modules',

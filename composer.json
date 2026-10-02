@@ -69,6 +69,7 @@
         "omscllc/clean_blog_theme": "dev-develop",
         "predis/predis": "^3.2",
         "ramsey/uuid": "^4.9",
+        "symfony/dotenv": "^7.4",
         "symfony/uid": "^7.3",
         "wikimedia/composer-merge-plugin": "^2.1"
     },
