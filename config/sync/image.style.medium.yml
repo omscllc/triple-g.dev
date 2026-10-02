@@ -1,4 +1,4 @@
-uuid: 2b60c7a5-ef7b-4020-96b2-856f871d4fb6
+uuid: 7ef9f9e6-02e5-4cf9-af17-1cd98443a6f8
 langcode: en
 status: true
 dependencies: {  }
@@ -15,10 +15,9 @@ effects:
       width: 220
       height: 220
       upscale: false
-  14ca3957-a7d3-4f05-8d84-68b80f260821:
-    uuid: 14ca3957-a7d3-4f05-8d84-68b80f260821
+  c410ed2f-aa30-4d9c-a224-d2865d9188cd:
+    uuid: c410ed2f-aa30-4d9c-a224-d2865d9188cd
     id: image_convert_avif
     weight: 2
     data:
       extension: webp
-pipeline: ''

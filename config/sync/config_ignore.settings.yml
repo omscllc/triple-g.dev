@@ -1,4 +1,0 @@
-mode: simple
-ignored_config_entities:
-  - system.performance
-  - system.site

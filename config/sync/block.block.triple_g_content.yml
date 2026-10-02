@@ -1,4 +1,4 @@
-uuid: 9400a0f3-8a11-4198-84c3-9823168cfdb9
+uuid: 77a033ac-87c7-4a78-b7cb-e774aa9c17e0
 langcode: en
 status: true
 dependencies:
@@ -7,11 +7,11 @@ dependencies:
   theme:
     - triple_g
 _core:
-  default_config_hash: ApBXDJX-hVDtzox6ufXoqMp0d5R2V4_brSMlblzuQGI
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
 id: triple_g_content
 theme: triple_g
 region: content
-weight: -3
+weight: 0
 provider: null
 plugin: system_main_block
 settings:

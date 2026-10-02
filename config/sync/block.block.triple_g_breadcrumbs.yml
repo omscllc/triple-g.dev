@@ -1,4 +1,4 @@
-uuid: 6e6a6da5-95e3-4b87-87a7-0ede838119ab
+uuid: 4c86ef14-9bfc-41b7-be77-1d834226c058
 langcode: en
 status: true
 dependencies:
@@ -7,11 +7,11 @@ dependencies:
   theme:
     - triple_g
 _core:
-  default_config_hash: srgQStMQRlGpjtsnNRqqg4dV7WNBxVMJ14_lU-JU7Ko
+  default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
 id: triple_g_breadcrumbs
 theme: triple_g
-region: content
-weight: -5
+region: breadcrumb
+weight: 0
 provider: null
 plugin: system_breadcrumb_block
 settings:

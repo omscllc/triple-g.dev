@@ -1,0 +1,10 @@
+<div{{ attributes.addClass('site-shell') }}>
+  {% block header %}{% endblock %}
+  <div class="site-shell__breadcrumb">{% block breadcrumb %}{% endblock %}</div>
+  <div class="site-shell__highlighted">{% block highlighted %}{% endblock %}</div>
+  <div class="site-shell__help">{% block help %}{% endblock %}</div>
+  <main id="main-content" class="site-shell__main" role="main">
+    {% block content %}{% endblock %}
+  </main>
+  {% block footer %}{% endblock %}
+</div>

@@ -5,6 +5,7 @@ Act as an expert Drupal 11 Frontend Architect and Systems Engineer specializing 
 
 ## Infrastructure Context & Performance Strategy
 - **Environment:** Dedicated Linux VPS with complete server control.
+- **Local Development Environment:** Alpine Linux Docker container
 - **Backend Stack:** Nginx, MariaDB, and Valkey.
 - **Caching Objective:** Route Drupal's cache bins (render, page, bootstrap) into Valkey via the Redis/Valkey module ecosystem to keep PHP and database overhead near zero for static reads. Nginx must handle static file delivery with aggressive microcaching headers.
 - **Philosophy:** No tracking, no marketing pop-ups, and no commercial conversions. The focus is strictly on long-form content readability and rapid asset execution.

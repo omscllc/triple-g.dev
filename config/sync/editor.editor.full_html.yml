@@ -1,4 +1,4 @@
-uuid: c05a4c9d-fb19-4218-9fa0-b0e139231cab
+uuid: 6da75c87-46b6-4a02-851e-a352a3ba08c4
 langcode: en
 status: true
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
   module:
     - ckeditor5
 _core:
-  default_config_hash: lurcn8yf33g3Dkzdc55cTfJa9salGp9ytSYyG1s7QMI
+  default_config_hash: 4mmJmN8kEiUf9aytnx0QPOORBNL5JaF_ijXRwOm2stg
 format: full_html
 editor: ckeditor5
 settings:
@@ -15,49 +15,26 @@ settings:
     items:
       - bold
       - italic
-      - underline
       - strikethrough
       - superscript
       - subscript
       - removeFormat
-      - specialCharacters
-      - emoji
-      - icon
-      - htmlEmbed
       - '|'
-      - fontColor
-      - fontFamily
-      - fontSize
-      - fontBackgroundColor
-      - '|'
-      - detail
       - link
-      - findAndReplace
-      - '-'
-      - alignment
-      - indent
-      - outdent
+      - '|'
       - bulletedList
       - numberedList
       - '|'
       - blockQuote
       - drupalInsertImage
-      - drupalMedia
       - insertTable
       - horizontalLine
       - '|'
       - heading
-      - code
       - codeBlock
       - '|'
       - sourceEditing
   plugins:
-    ckeditor5_alignment:
-      enabled_alignments:
-        - center
-        - justify
-        - left
-        - right
     ckeditor5_codeBlock:
       languages:
         -
@@ -109,162 +86,16 @@ settings:
         - heading4
         - heading5
         - heading6
-    ckeditor5_icons_icon:
-      fa_version: '6'
-      fa_styles:
-        - solid
-        - regular
-        - brands
-      custom_metadata: false
-      async_metadata: true
-      recommended_enabled: false
     ckeditor5_imageResize:
       allow_resize: true
     ckeditor5_list:
       properties:
         reversed: true
         startIndex: true
+        styles: true
       multiBlock: true
-    ckeditor5_plugin_pack_auto_image__auto_image:
-      enabled: true
-    ckeditor5_plugin_pack_emoji_emoji:
-      definitionsUrl: ''
-      dropdownLimit: 6
-      skinTone: default
-      useCustomFont: false
-      version: 16
-    ckeditor5_plugin_pack_empty_block__empty_block:
-      enabled: true
-    ckeditor5_plugin_pack_find_and_replace__find_and_replace:
-      ui_type: dialog
-    ckeditor5_plugin_pack_font__font_color:
-      colors: {  }
-      use_default_colors: true
-      use_colorpicker: true
-      font_color_columns: 5
-      font_color_document_colors: 10
-      bg_color_columns: 5
-      bg_color_document_colors: 10
-    ckeditor5_plugin_pack_font__font_family:
-      options: "Open Sans, sans-serif\r\nFontDinerSwanky\r\nFedero, Open Sans, sans-serif"
-    ckeditor5_plugin_pack_font__font_size:
-      options: ''
-    ckeditor5_plugin_pack_indent_block__indent_block:
-      enabled: true
-    ckeditor5_plugin_pack_layout_table__table_properties:
-      use_default_colors: true
-      use_hex_colors: false
-      default_table_properties:
-        border_style: ''
-        color_picker: hsl
-        use_default_border_color: false
-        border_color: '#000000'
-        border_width: ''
-        use_default_bg_color: false
-        bg_color: '#000000'
-        width: ''
-        height: ''
-        alignment: ''
-      default_table_cell_properties:
-        border_style: ''
-        color_picker: hsl
-        use_default_border_color: false
-        border_color: '#000000'
-        border_width: ''
-        use_default_bg_color: false
-        bg_color: '#000000'
-        width: ''
-        height: ''
-        text_alignment: left
-        padding: ''
-        vertical_alignment: middle
-      colors: {  }
-    ckeditor5_plugin_pack_link_attributes__link_attributes:
-      attributes: {  }
-    ckeditor5_plugin_pack_paste_markdown__paste_markdown:
-      enabled: true
-    ckeditor5_plugin_pack_text_transformation__text_transformation:
-      enabled: true
-      extra_transformations: ''
-      extra_regex_transformations: {  }
-      groups:
-        typography:
-          transformations:
-            ellipsis:
-              enabled: 1
-            enDash:
-              enabled: 1
-            emDash:
-              enabled: 1
-          enabled: 1
-        quotes:
-          transformations:
-            quotesPrimary:
-              enabled: 1
-            quotesSecondary:
-              enabled: 1
-          enabled: 1
-        symbols:
-          transformations:
-            trademark:
-              enabled: 1
-            registeredTrademark:
-              enabled: 1
-            copyright:
-              enabled: 1
-          enabled: 1
-        mathematical:
-          transformations:
-            oneHalf:
-              enabled: 1
-            oneThird:
-              enabled: 1
-            twoThirds:
-              enabled: 1
-            oneFourth:
-              enabled: 1
-            threeQuarters:
-              enabled: 1
-            lessThanOrEqual:
-              enabled: 1
-            greaterThanOrEqual:
-              enabled: 1
-            notEqual:
-              enabled: 1
-            arrowLeft:
-              enabled: 1
-            arrowRight:
-              enabled: 1
-          enabled: 1
-        misc:
-          transformations:
-            quotesPrimaryEnGb:
-              enabled: 0
-            quotesSecondaryEnGb:
-              enabled: 0
-            quotesPrimaryPl:
-              enabled: 0
-            quotesSecondaryPl:
-              enabled: 0
-          enabled: 0
-    ckeditor5_plugin_pack_word_count__word_count:
-      word_count_enabled: true
-      word_count_mode: words_chars
     ckeditor5_sourceEditing:
-      allowed_tags:
-        - '<detail name>'
-        - '<dialog id>'
-        - '<button class data-target>'
-    editor_advanced_link_link:
-      enabled_attributes:
-        - aria-label
-        - class
-        - id
-        - rel
-        - target
-        - title
-    media_media:
-      allow_view_mode_override: false
+      allowed_tags: {  }
 image_upload:
   status: true
   scheme: public

@@ -1,0 +1,7 @@
+<article{{ attributes.addClass('blog-card') }}>
+  <header class="blog-card__header">
+    <div class="blog-card__date">{% block authored_on %}{% endblock %}</div>
+    <h2 class="blog-card__title">{% block title %}{% endblock %}</h2>
+  </header>
+  <div class="blog-card__summary">{% block summary %}{% endblock %}</div>
+</article>

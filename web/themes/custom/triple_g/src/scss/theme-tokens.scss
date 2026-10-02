@@ -1,0 +1,17 @@
+$paper: oklch(98.85% 0.0057 84.57);
+$ink: oklch(31.25% 0.0154 264.32);
+$brass: oklch(75% 0.0861 65.3);
+$copper: oklch(63.43% 0.0747 48.84);
+$bronze: oklch(53.12% 0.0786 64.05);
+
+:root {
+  color-scheme: light;
+  --triple-g-color-paper: #{$paper};
+  --triple-g-color-ink: #{$ink};
+  --triple-g-color-brass: #{$brass};
+  --triple-g-color-copper: #{$copper};
+  --triple-g-color-bronze: #{$bronze};
+  --triple-g-font-ui: "Inter", sans-serif;
+  --triple-g-font-reading: "Lora", serif;
+  --triple-g-gutter: clamp(1rem, 4vw, min(5rem, 25vw));
+}

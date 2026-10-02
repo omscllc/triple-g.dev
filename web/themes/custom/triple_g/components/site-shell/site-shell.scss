@@ -1,0 +1,83 @@
+.site-shell {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: var(--triple-g-color-paper);
+  color: var(--triple-g-color-ink);
+
+  &__header {
+    border-block-end: 1px solid var(--triple-g-color-brass);
+    padding: 1.25rem var(--triple-g-gutter);
+  }
+
+  &__header-inner {
+    display: flex;
+    width: min(100%, 88rem);
+    margin-inline: auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  &__branding img {
+    display: block;
+    width: min(14rem, 65vw);
+    height: auto;
+  }
+
+  &__navigation {
+    font-family: var(--triple-g-font-ui);
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    a {
+      color: var(--triple-g-color-ink);
+      text-underline-offset: 0.2em;
+    }
+  }
+
+  &__breadcrumb,
+  &__highlighted,
+  &__help {
+    width: min(100%, 88rem);
+    margin-inline: auto;
+    padding-inline: var(--triple-g-gutter);
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__main {
+    width: min(100%, 76rem);
+    margin-inline: auto;
+    padding: 2.5rem var(--triple-g-gutter) 5rem;
+    flex: 1;
+  }
+
+  &__footer {
+    border-block-start: 1px solid var(--triple-g-color-brass);
+    padding: 1.5rem var(--triple-g-gutter);
+    color: var(--triple-g-color-ink);
+    font-family: var(--triple-g-font-ui);
+  }
+
+  &__footer-inner {
+    width: min(100%, 88rem);
+    margin-inline: auto;
+  }
+
+  @media (max-width: 40rem) {
+    &__header-inner {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+}

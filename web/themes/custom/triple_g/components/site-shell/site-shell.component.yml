@@ -1,0 +1,25 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Site Shell
+status: stable
+props:
+  type: object
+  properties:
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Wrapper attributes.
+slots:
+  header:
+    title: Header
+    required: true
+  breadcrumb:
+    title: Breadcrumb
+  highlighted:
+    title: Highlighted content
+  help:
+    title: Help
+  content:
+    title: Main content
+    required: true
+  footer:
+    title: Footer

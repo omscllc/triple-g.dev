@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 // phpcs:ignoreFile
 
@@ -846,12 +847,24 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 
 $settings['config_sync_directory'] = '../config/sync';
 
-// Override the logo path for 'triple_g' theme.
-$config['triple_g.settings']['logo']['use_default'] = FALSE;
-$config['triple_g.settings']['logo']['path'] = '/assets/theme/logo.png.webp';
-
 // Set the public file path to 'assets/'.
 $settings['file_public_path'] = 'assets';
+
+$databases['default']['default'] = [
+  'database' => $_ENV['DB_NAME'],
+  'username' => $_ENV['DB_USER'],
+  'password' => $_ENV['DB_PASSWORD'],
+  'prefix' => '',
+  'host' => $_ENV['DB_HOST'],
+  'port' => $_ENV['DB_PORT'],
+  'isolation_level' => 'READ COMMITTED',
+  'driver' => 'mysql',
+  'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
+  'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
+];
+
+
+$settings['hash_salt'] = $_ENV['HASH_SALT'];
 
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';

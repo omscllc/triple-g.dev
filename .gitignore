@@ -217,6 +217,11 @@ CRUSH.md
 !/web/assets/triple-g-*.png
 
 /web/themes/custom/triple_g/css/triple_g.post.min.css
+/web/themes/custom/triple_g/components/**/*.css
+/web/themes/custom/triple_g/css/theme-tokens.css
 
 .lighthouseci/
 .lighthouseci/* # ignore everything in the folder
+
+.env
+.envrc

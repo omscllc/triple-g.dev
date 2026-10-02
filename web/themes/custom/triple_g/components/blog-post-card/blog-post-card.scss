@@ -1,0 +1,50 @@
+.blog-card {
+  border-block-start: 1px solid var(--triple-g-color-brass);
+  padding-block: 2rem;
+
+  &__header {
+    display: grid;
+    gap: 0.75rem;
+    align-items: baseline;
+  }
+
+  &__date {
+    color: var(--triple-g-color-bronze);
+    font-family: var(--triple-g-font-ui);
+    font-size: 0.875rem;
+  }
+
+  &__title {
+    margin: 0;
+    color: var(--triple-g-color-ink);
+    font-family: var(--triple-g-font-ui);
+    font-size: 1.75rem;
+    line-height: 1.2;
+
+    a {
+      color: inherit;
+      text-decoration-color: var(--triple-g-color-copper);
+      text-underline-offset: 0.15em;
+
+      &:focus-visible {
+        outline: 2px solid var(--triple-g-color-bronze);
+        outline-offset: 0.2em;
+      }
+    }
+  }
+
+  &__summary {
+    max-width: 72ch;
+    margin-block-start: 1rem;
+    color: var(--triple-g-color-ink);
+    font-family: var(--triple-g-font-reading);
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+
+  @media (min-width: 48rem) {
+    &__header {
+      grid-template-columns: 10rem minmax(0, 1fr);
+    }
+  }
+}

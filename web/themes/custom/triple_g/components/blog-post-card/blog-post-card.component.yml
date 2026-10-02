@@ -1,0 +1,13 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Blog Post Card
+status: stable
+slots:
+  authored_on:
+    title: Authored On
+    required: true
+  title:
+    title: Title
+    required: true
+  summary:
+    title: Summary
+    required: true

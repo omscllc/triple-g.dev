@@ -1,4 +1,4 @@
-uuid: 1faad000-ff5d-461f-8341-dc1c0fa5790d
+uuid: 6d8b1a2c-6100-4942-be50-b26b78d31af2
 langcode: en
 status: true
 dependencies:
@@ -7,11 +7,11 @@ dependencies:
   theme:
     - triple_g
 _core:
-  default_config_hash: _BUKEm6BkQZ7y5rTrexwWDTggTdT--5GGbgAikpkVns
+  default_config_hash: BZ5tpW7H8X4PVGRm3MImTIHd2tN0eF7zOtp4SpRYUA0
 id: triple_g_messages
 theme: triple_g
-region: content
-weight: -6
+region: highlighted
+weight: -5
 provider: null
 plugin: system_messages_block
 settings:

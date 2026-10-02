@@ -1,4 +1,4 @@
-uuid: d8f5e023-4f92-4840-be0f-7d8461653744
+uuid: 75d0cdef-856b-4c45-9abd-96e9da7340e7
 langcode: en
 status: true
 dependencies: {  }
@@ -15,8 +15,8 @@ effects:
       width: 480
       height: 480
       upscale: false
-  43d3afc3-0551-4a06-9b36-c30c82c58eb5:
-    uuid: 43d3afc3-0551-4a06-9b36-c30c82c58eb5
+  6e8fe467-84c1-4ef0-a73b-7eccf1cc20e8:
+    uuid: 6e8fe467-84c1-4ef0-a73b-7eccf1cc20e8
     id: image_convert_avif
     weight: 2
     data:

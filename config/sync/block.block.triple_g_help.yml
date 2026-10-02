@@ -1,17 +1,17 @@
-uuid: a8900af7-2ca0-4417-b36d-4e1d1d314352
+uuid: 59630bd0-fa3e-4162-a4b8-36328f9985e4
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - help
   theme:
     - triple_g
 _core:
-  default_config_hash: IdYQBbSs0hzTITG-aGp0MFamfuQAyV8aW91XNq9TYak
+  default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
 id: triple_g_help
 theme: triple_g
 region: header
-weight: -6
+weight: 0
 provider: null
 plugin: help_block
 settings:

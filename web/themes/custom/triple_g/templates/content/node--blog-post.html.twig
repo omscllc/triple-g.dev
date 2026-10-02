@@ -1,0 +1,10 @@
+{% embed 'triple_g:blog-post' with {} %}
+  {% block title %}
+    {{ title_prefix }}
+    <h1{{ title_attributes.addClass('blog-post__title') }}>{{ label }}</h1>
+    {{ title_suffix }}
+  {% endblock %}
+  {% block authored_on %}{{ content.field_authored_on }}{% endblock %}
+  {% block body %}{{ content.body }}{% endblock %}
+{% endembed %}
+  {{ content|without('field_authored_on', 'body') }}

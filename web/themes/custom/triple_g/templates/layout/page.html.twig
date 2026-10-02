@@ -1,0 +1,33 @@
+{% embed 'triple_g:site-shell' with {} %}
+  {% block header %}
+  <header class="site-shell__header" role="banner">
+    <div class="site-shell__header-inner">
+      <a class="site-shell__branding" href="{{ front_page }}" rel="home">
+        <img src="{{ base_path }}assets/triple-g-logo.png" alt="{{ 'Geek’s Gadgets and Grizmos'|t }}">
+      </a>
+      {% if page.primary_menu %}
+        <nav class="site-shell__navigation" aria-label="{{ 'Primary navigation'|t }}">
+          {{ page.primary_menu }}
+        </nav>
+      {% endif %}
+    </div>
+    {% if page.secondary_menu %}
+      <nav class="site-shell__navigation" aria-label="{{ 'Secondary navigation'|t }}">
+        {{ page.secondary_menu }}
+      </nav>
+    {% endif %}
+    {{ page.header }}
+  </header>
+  {% endblock %}
+  {% block breadcrumb %}{{ page.breadcrumb }}{% endblock %}
+  {% block highlighted %}{{ page.highlighted }}{% endblock %}
+  {% block help %}{{ page.help }}{% endblock %}
+  {% block content %}{{ page.content }}{% endblock %}
+  {% block footer %}
+  {% if page.footer %}
+    <footer class="site-shell__footer" role="contentinfo">
+      <div class="site-shell__footer-inner">{{ page.footer }}</div>
+    </footer>
+  {% endif %}
+  {% endblock %}
+{% endembed %}

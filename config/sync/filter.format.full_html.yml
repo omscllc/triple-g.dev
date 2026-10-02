@@ -1,45 +1,20 @@
-uuid: 5b9b5665-40a4-4542-999c-0448ca3e7d56
+uuid: 7a0e2dc6-f6bd-45f8-b9e4-8a940a4d7447
 langcode: en
 status: true
 dependencies:
   module:
-    - blazy
     - editor
-    - entity_embed
-    - media
-    - no_nbsp
 _core:
   default_config_hash: vpZysv3RHJjhYzq7O_q5q8mVlHdrSzKELmXyiX6RtV0
 name: 'Full HTML'
 format: full_html
-weight: 0
+weight: 2
 filters:
-  blazy_filter:
-    id: blazy_filter
-    provider: blazy
-    status: false
-    weight: 3
-    settings:
-      media_switch: ''
-      hybrid_style: ''
-      box_style: ''
-      box_media_style: ''
-      box_caption: ''
-      filter_tags:
-        img: img
-        iframe: iframe
-      use_data_uri: '0'
   editor_file_reference:
     id: editor_file_reference
     provider: editor
     status: true
     weight: 11
-    settings: {  }
-  entity_embed:
-    id: entity_embed
-    provider: entity_embed
-    status: true
-    weight: 100
     settings: {  }
   filter_align:
     id: filter_align
@@ -53,41 +28,15 @@ filters:
     status: true
     weight: 9
     settings: {  }
-  filter_html:
-    id: filter_html
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
     provider: filter
-    status: false
-    weight: -10
-    settings:
-      allowed_html: '<detail name> <dialog id> <button class data-target>'
-      filter_html_help: true
-      filter_html_nofollow: false
+    status: true
+    weight: 10
+    settings: {  }
   filter_image_lazy_load:
     id: filter_image_lazy_load
     provider: filter
     status: true
     weight: 15
     settings: {  }
-  filter_no_nbsp:
-    id: filter_no_nbsp
-    provider: no_nbsp
-    status: true
-    weight: 0
-    settings:
-      preserve_placeholders: true
-  filter_url:
-    id: filter_url
-    provider: filter
-    status: true
-    weight: 0
-    settings:
-      filter_url_length: 72
-  media_embed:
-    id: media_embed
-    provider: media
-    status: true
-    weight: 100
-    settings:
-      default_view_mode: default
-      allowed_view_modes: {  }
-      allowed_media_types: {  }

@@ -1,4 +1,4 @@
-uuid: 4713ea45-d428-4bee-98a5-09f499d1b48f
+uuid: ddb2807b-fae9-4955-a7c2-106f27534ead
 langcode: en
 status: true
 dependencies:
@@ -7,11 +7,11 @@ dependencies:
   theme:
     - triple_g
 _core:
-  default_config_hash: LiHIJ7bpZtCwXSL3j2zRi5OFTb6lwJ99x0xslk0PueA
+  default_config_hash: '-OAAZDw1OR_UyAEPEKX0Hu4LaZD149vW9PmMnIC-v0o'
 id: triple_g_site_branding
 theme: triple_g
-region: sidebar_first
-weight: -7
+region: header
+weight: 0
 provider: null
 plugin: system_branding_block
 settings:
@@ -20,6 +20,6 @@ settings:
   label_display: '0'
   provider: system
   use_site_logo: true
-  use_site_name: false
+  use_site_name: true
   use_site_slogan: true
 visibility: {  }

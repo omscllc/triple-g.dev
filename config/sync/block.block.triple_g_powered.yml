@@ -1,0 +1,22 @@
+uuid: e73017b4-0c90-4c0f-80c0-1cc21ea80418
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - triple_g
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: triple_g_powered
+theme: triple_g
+region: header
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

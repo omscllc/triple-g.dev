@@ -1,14 +1,14 @@
 _core:
   default_config_hash: ijfbzDTN4CbE7Sr-6ubWzy_t1vH4OtU1doNCLssVz-4
 langcode: en
-uuid: fdc354b0-f093-4b30-86d4-6aaf4b7be853
-name: 'Geeks, Gadgets and Gizmos'
-mail: admin@triple-g.casa
-slogan: 'Just another geek'
+uuid: 6b2c2f9d-2cab-4860-9c41-1687fcb328e4
+name: "Geek's Gadgets and Gizmos"
+mail: geek@triple-g.dev
+slogan: ''
 page:
-  403: /node/12
-  404: /node/11
-  front: /node/4
+  403: ''
+  404: ''
+  front: /node
 admin_compact_mode: false
 weight_select_max: 100
 default_langcode: en

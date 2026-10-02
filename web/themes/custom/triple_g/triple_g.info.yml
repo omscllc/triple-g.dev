@@ -1,0 +1,16 @@
+name: Triple G
+type: theme
+description: "A content-first theme for Geek's Gadgets and Gizmos."
+core_version_requirement: ^11
+base theme: false
+libraries:
+  - triple_g/global
+regions:
+  header: Header
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  breadcrumb: Breadcrumb
+  highlighted: Highlighted
+  help: Help
+  content: Content
+  footer: Footer
