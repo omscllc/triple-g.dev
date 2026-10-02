@@ -1,0 +1,10 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Journal Intro
+status: stable
+slots:
+  title:
+    title: Page title
+    required: true
+  description:
+    title: Introduction
+    required: true

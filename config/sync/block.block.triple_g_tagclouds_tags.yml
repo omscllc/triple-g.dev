@@ -1,0 +1,26 @@
+uuid: 33f72908-2b3b-4dbb-b7c5-d96b873f87b8
+langcode: en
+status: true
+dependencies:
+  module:
+    - tagclouds
+  theme:
+    - triple_g
+id: triple_g_tagclouds_tags
+theme: triple_g
+region: sidebar_first
+weight: -5
+provider: null
+plugin: 'tagclouds_block:tags'
+settings:
+  id: 'tagclouds_block:tags'
+  label: Tags
+  label_display: visible
+  provider: tagclouds
+  cache:
+    max_age: 0
+    contexts: {  }
+  tags: 30
+  vocabulary: tags
+  sort_order: default
+visibility: {  }

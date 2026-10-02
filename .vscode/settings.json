@@ -1,0 +1,10 @@
+{
+  "php.problems.exclude": {
+    "web/core/modules/system/tests/modules/router_test_directory/**": true,
+    "web/modules/contrib/resource_hints/tests/**": true
+  },
+  "php.files.exclude": {
+    "web/core/modules/system/tests/modules/router_test_directory/**": true,
+    "web/modules/contrib/resource_hints/tests/**": true
+  }
+}

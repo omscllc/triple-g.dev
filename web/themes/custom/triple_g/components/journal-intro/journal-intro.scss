@@ -1,0 +1,46 @@
+.journal-intro {
+  max-width: 108rem;
+  margin-inline: auto;
+  padding-block: 3.75rem 3rem;
+  border-block-end: 3px double var(--triple-g-color-brass);
+
+  &__main {
+    max-width: 70rem;
+  }
+
+  &__title h1 {
+    max-width: 32ch;
+    margin: 0;
+    color: var(--triple-g-color-ink);
+    font-family: var(--triple-g-font-ui);
+    font-size: 3.75rem;
+    font-weight: 700;
+    line-height: 1.05;
+  }
+
+  &__description {
+    max-width: 54ch;
+    margin-block-start: 1rem;
+    font-family: var(--triple-g-font-reading);
+    font-size: 1.15rem;
+    line-height: 1.65;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 48rem) {
+    padding-block: 2.75rem 2.25rem;
+
+    &__title h1 {
+      font-size: 3rem;
+    }
+  }
+
+  @media (max-width: 36rem) {
+    &__title h1 {
+      font-size: 2.5rem;
+    }
+  }
+}

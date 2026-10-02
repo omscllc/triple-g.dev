@@ -5,10 +5,9 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.blog_post.body
-    - field.field.node.blog_post.field_authored_on
+    - field.field.node.blog_post.field_tags
     - node.type.blog_post
   module:
-    - datetime
     - text
     - user
 id: node.blog_post.teaser
@@ -24,18 +23,10 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
-  field_authored_on:
-    type: datetime_default
-    label: hidden
-    settings:
-      timezone_override: ''
-      format_type: medium
-    third_party_settings: {  }
-    weight: -1
-    region: content
   links:
     settings: {  }
     third_party_settings: {  }
     weight: 100
     region: content
-hidden: {  }
+hidden:
+  field_tags: true

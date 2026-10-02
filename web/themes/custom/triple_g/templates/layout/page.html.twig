@@ -3,31 +3,55 @@
   <header class="site-shell__header" role="banner">
     <div class="site-shell__header-inner">
       <a class="site-shell__branding" href="{{ front_page }}" rel="home">
-        <img src="{{ base_path }}assets/triple-g-logo.png" alt="{{ 'Geek’s Gadgets and Grizmos'|t }}">
+        <img src="{{ base_path }}assets/triple-g-logo.png" alt="{{ 'Geek’s Gadgets and Gizmos'|t }}">
       </a>
-      {% if page.primary_menu %}
-        <nav class="site-shell__navigation" aria-label="{{ 'Primary navigation'|t }}">
+      {% if page.branding %}
+        <div class="site-shell__brand-name">{{ page.branding }}</div>
+      {% endif %}
+      <div class="site-shell__navigation">
+        {% if page.primary_menu %}
           {{ page.primary_menu }}
-        </nav>
+        {% endif %}
+        <ul class="site-shell__theme-menu">
+          <li>
+            <button class="site-shell__theme-toggle" type="button" data-color-mode-toggle aria-pressed="false">
+              <span>{{ 'Dark mode'|t }}</span>
+              <span class="site-shell__theme-switch" aria-hidden="true"></span>
+            </button>
+          </li>
+        </ul>
+      </div>
+      {% if page.secondary_menu %}
+      <div class="site-shell__account">
+        {{ page.secondary_menu }}
+      </div>
       {% endif %}
     </div>
-    {% if page.secondary_menu %}
-      <nav class="site-shell__navigation" aria-label="{{ 'Secondary navigation'|t }}">
-        {{ page.secondary_menu }}
-      </nav>
-    {% endif %}
-    {{ page.header }}
   </header>
   {% endblock %}
-  {% block breadcrumb %}{{ page.breadcrumb }}{% endblock %}
+  {% block breadcrumb %}{% if not is_front %}{{ page.breadcrumb }}{% endif %}{% endblock %}
   {% block highlighted %}{{ page.highlighted }}{% endblock %}
   {% block help %}{{ page.help }}{% endblock %}
-  {% block content %}{{ page.content }}{% endblock %}
+  {% block content %}
+    {% if not is_front %}
+      {{ page.header }}
+    {% endif %}
+    <div class="site-shell__columns">
+      {% if page.sidebar_first %}
+        <aside class="site-shell__sidebar" aria-label="{{ 'Blog sidebar'|t }}">
+          {{ page.sidebar_first }}
+        </aside>
+      {% endif %}
+      <div class="site-shell__content">
+        {{ page.content }}
+      </div>
+    </div>
+  {% endblock %}
   {% block footer %}
-  {% if page.footer %}
     <footer class="site-shell__footer" role="contentinfo">
-      <div class="site-shell__footer-inner">{{ page.footer }}</div>
+      <div class="site-shell__footer-inner">
+        {{ page.footer }}
+      </div>
     </footer>
-  {% endif %}
   {% endblock %}
 {% endembed %}

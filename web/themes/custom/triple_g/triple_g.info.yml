@@ -6,6 +6,7 @@ base theme: false
 libraries:
   - triple_g/global
 regions:
+  branding: Branding
   header: Header
   primary_menu: 'Primary menu'
   secondary_menu: 'Secondary menu'
@@ -13,4 +14,5 @@ regions:
   highlighted: Highlighted
   help: Help
   content: Content
+  sidebar_first: 'Left sidebar'
   footer: Footer

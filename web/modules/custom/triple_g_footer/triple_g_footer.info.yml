@@ -1,0 +1,8 @@
+name: Triple G Footer
+type: module
+description: 'Provides editable footer blocks for the Triple G site.'
+core_version_requirement: ^11
+dependencies:
+  - drupal:block
+  - drupal:token
+  - drupal:token

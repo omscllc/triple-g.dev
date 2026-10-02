@@ -1,4 +1,7 @@
 global:
+  header: true
   css:
     theme:
       css/theme-tokens.css: {}
+  js:
+    src/js/color-mode.js: {}

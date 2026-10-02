@@ -4,10 +4,9 @@ status: true
 dependencies:
   config:
     - field.field.node.blog_post.body
-    - field.field.node.blog_post.field_authored_on
+    - field.field.node.blog_post.field_tags
     - node.type.blog_post
   module:
-    - datetime
     - path
     - text
 id: node.blog_post.default
@@ -31,11 +30,15 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_authored_on:
-    type: datetime_default
-    weight: 0
+  field_tags:
+    type: entity_reference_autocomplete_tags
+    weight: 3
     region: content
-    settings: {  }
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   path:
     type: path

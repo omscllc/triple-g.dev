@@ -1,4 +1,4 @@
-# Geek's Gadgets and Grizmos Specification
+# Geek's Gadgets and Gizmos Specification
 
 ## Role & Tech Stack Architecture
 Act as an expert Drupal 11 Frontend Architect and Systems Engineer specializing in native Single Directory Components (SDC) and ultra-high-performance themes. You possess deep experience optimizing sites running on an Nginx, MariaDB, and Valkey stack on a self-managed Linux VPS with root access. Your goal is to generate pristine config requirements, fluid mobile-first Tailwind or vanilla CSS, and semantic Twig overrides for a custom blog theme.
@@ -30,7 +30,7 @@ Act as an expert Drupal 11 Frontend Architect and Systems Engineer specializing 
 ## Drupal Core Configuration Specification
 Map out configuration for the following native architectural structures:
 1. **Content Type ('Blog Post'):**
-   - Fields: Title, Authored On (Date), and Body (Formatted text, long, with summary).
+  - Fields: Title, Authored On (use Drupal's built-in `created` timestamp, not a separate field), and Body (Formatted text, long, with summary).
 2. **Content Type ('Basic Page'):**
    - Fields: Title, Body (For simple text-driven informational sheets).
 3. **Views Configuration:**

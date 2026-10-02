@@ -14,8 +14,8 @@ name: 'Lighthouse-Badger-Default'
 
 # INPUTS as environmental variables (env) for not manually triggered workflows
 env:
-  URLS: '${{ vars.STG_BASE_URL }} ${{ vars.STG_BASE_URL }}/portfolio ${{ vars.STG_BASE_URL }}/about-me ${{ vars.STG_BASE_URL }}/contact ${{ vars.STG_BASE_URL }}/gadgets'# URL(s) to be checked e.g. 'https://github.com/sitdisch https://github.com/mythemeway'
-  TOKEN_NAME: 'LIGHTHOUSE_BADGER_TOKEN'# target token name; insert only the name never the real value e.g. 'LIGHTHOUSE_BADGER_TOKEN'
+  URLS: '${{ vars.STG_BASE_URL }} ${{ vars.STG_BASE_URL }}/portfolio ${{ vars.STG_BASE_URL }}/about-me ${{ vars.STG_BASE_URL }}/contact ${{ vars.STG_BASE_URL }}/gadgets' # URL(s) to be checked e.g. 'https://github.com/sitdisch https://github.com/mythemeway'
+  TOKEN_NAME: 'LIGHTHOUSE_BADGER_TOKEN' # target token name; insert only the name never the real value e.g. 'LIGHTHOUSE_BADGER_TOKEN'
   # If any of the following env is blank, a default value is used instead
   REPO_BRANCH: '${{ github.repository }} ${{ github.ref_name }}' # target repository & branch e.g. 'dummy/mytargetrepo main'
   BADGES_ARGS: '-b plastic -o lighthouse_results -r' # badge-style '-b {flat,...}', preceding-label '-l "Lighthouse "', output-path '-o lighthouse_results/dummy', save-report '-r', single-badge '-s'

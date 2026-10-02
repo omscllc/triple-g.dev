@@ -4,7 +4,7 @@ langcode: en
 uuid: 6b2c2f9d-2cab-4860-9c41-1687fcb328e4
 name: "Geek's Gadgets and Gizmos"
 mail: geek@triple-g.dev
-slogan: ''
+slogan: 'Musings about gadgets, tools, hobbies, and other things'
 page:
   403: ''
   404: ''

@@ -3,29 +3,70 @@ permissions:
   contents: read
 
 on:
-  workflow_run:
-    workflows:
-      - "Triple G build and deploy"
-    types:
-      - completed
+  workflow_call:
+    inputs:
+      deployment_target:
+        description: Deployment target to audit
+        required: true
+        type: string
 
 jobs:
   lighthouse-ci:
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.conclusion == 'success'
+    timeout-minutes: 25
     steps:
       - name: Run Lighthouse CI
-        uses: appleboy/ssh-action@v1
+        uses: appleboy/ssh-action@0ff4204d59e8e51228ff73bce53f80d53301dee2 # v1.2.5
         env:
-            LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          DEPLOYMENT_TARGET: ${{ inputs.deployment_target }}
+          DEV_DEPLOY_PATH: ${{ vars.DEV_DEPLOY_PATH }}
+          STG_DEPLOY_PATH: ${{ vars.STG_DEPLOY_PATH }}
+          DEV_BASE_URL: ${{ vars.DEV_BASE_URL }}
+          STG_BASE_URL: ${{ vars.STG_BASE_URL }}
+          LHCI_PATHS: ${{ vars.LHCI_PATHS }}
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
         with:
           host: ${{ vars.DEPLOY_HOST }}
           username: ${{ vars.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_KEY }}
-          envs: LHCI_GITHUB_APP_TOKEN
+          command_timeout: 20m
+          envs: DEPLOYMENT_TARGET,DEV_DEPLOY_PATH,STG_DEPLOY_PATH,DEV_BASE_URL,STG_BASE_URL,LHCI_PATHS,LHCI_GITHUB_APP_TOKEN
           script: |
             set -euo pipefail
-            echo "Changing to deploy path"
-            cd "${{ vars.STG_DEPLOY_PATH }}"
-            echo "Running Lighthouse CI on Home page"
-            lhci autorun --collect.url="${{ vars.STG_BASE_URL }}" --collect.url="${{ vars.STG_BASE_URL }}/portfolio" --collect.url="${{ vars.STG_BASE_URL }}/contact" --collect.url="${{ vars.STG_BASE_URL }}/about-me" --collect.url="${{ vars.STG_BASE_URL }}/gadgets" --fatal
+
+            case "$DEPLOYMENT_TARGET" in
+              dev)
+                : "${DEV_DEPLOY_PATH:?Set the DEV_DEPLOY_PATH Actions variable}"
+                : "${DEV_BASE_URL:?Set the DEV_BASE_URL Actions variable}"
+                DEPLOY_PATH="$DEV_DEPLOY_PATH"
+                BASE_URL="$DEV_BASE_URL"
+                ;;
+              stg)
+                : "${STG_DEPLOY_PATH:?Set the STG_DEPLOY_PATH Actions variable}"
+                : "${STG_BASE_URL:?Set the STG_BASE_URL Actions variable}"
+                DEPLOY_PATH="$STG_DEPLOY_PATH"
+                BASE_URL="$STG_BASE_URL"
+                ;;
+              *)
+                echo "Unsupported deployment target: $DEPLOYMENT_TARGET" >&2
+                exit 1
+                ;;
+            esac
+
+            : "${LHCI_PATHS:?Set LHCI_PATHS to space-separated relative paths, for example: / /node}"
+            read -r -a ROUTES <<< "$LHCI_PATHS"
+            if (( ${#ROUTES[@]} == 0 )); then
+              echo "LHCI_PATHS must contain at least one relative path" >&2
+              exit 1
+            fi
+
+            COLLECT_ARGS=()
+            for route in "${ROUTES[@]}"; do
+              [[ "$route" == /* ]] || route="/$route"
+              COLLECT_ARGS+=(--collect.url="${BASE_URL%/}${route}")
+            done
+
+            echo "Changing to deploy path: $DEPLOY_PATH"
+            cd "$DEPLOY_PATH"
+            echo "Running Lighthouse CI for $DEPLOYMENT_TARGET on: ${ROUTES[*]}"
+            lhci autorun "${COLLECT_ARGS[@]}" --fatal

@@ -1,5 +1,5 @@
 {% embed 'triple_g:blog-post-card' with {} %}
-  {% block authored_on %}{{ fields.field_authored_on.content }}{% endblock %}
+  {% block authored_on %}{{ fields.created.content }}{% endblock %}
   {% block title %}{{ fields.title.content }}{% endblock %}
   {% block summary %}{{ fields.body.content }}{% endblock %}
 {% endembed %}

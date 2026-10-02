@@ -1,0 +1,22 @@
+uuid: ebed5cd7-9767-4f6f-9092-adc2f2fb0b3b
+langcode: en
+status: true
+dependencies:
+  module:
+    - triple_g_footer
+  theme:
+    - triple_g
+id: triple_g_footer_copyright
+theme: triple_g
+region: footer
+weight: 0
+provider: null
+plugin: triple_g_copyright_notice
+settings:
+  id: triple_g_copyright_notice
+  label: 'Copyright notice'
+  label_display: '0'
+  provider: triple_g_footer
+  copyright_text: '© [current-date:custom:Y] David L. Weiner. All Rights Reserved'
+  view_mode: full
+visibility: {  }

@@ -4,109 +4,78 @@ on:
   pull_request:
     types: [closed]
     branches: ['develop']
+  push:
+    branches: ['feature/**']
   workflow_dispatch:
 
 jobs:
+  secrets:
+    uses: ./.github/workflows/secrets.yml
+
   deploy:
-    if: github.event.pull_request.merged == true
+    needs: secrets
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+    concurrency:
+      group: deploy-${{ github.event_name == 'push' && 'feature' || 'develop' }}
+      cancel-in-progress: false
     steps:
-      - name: Checkout Repo
-        uses: appleboy/ssh-action@v1
+      - name: Deploy exact commit
+        uses: appleboy/ssh-action@0ff4204d59e8e51228ff73bce53f80d53301dee2 # v1.2.5
+        env:
+          DEPLOY_EVENT: ${{ github.event_name }}
+          DEPLOY_REF: ${{ github.event_name == 'push' && github.ref_name || 'develop' }}
+          DEPLOY_SHA: ${{ github.sha }}
+          DEV_DEPLOY_PATH: ${{ vars.DEV_DEPLOY_PATH }}
+          STG_DEPLOY_PATH: ${{ vars.STG_DEPLOY_PATH }}
+          STG_BU_FILE_PREFIX: ${{ vars.STG_BU_FILE_PREFIX }}
         with:
           host: ${{ vars.DEPLOY_HOST }}
           username: ${{ vars.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_KEY }}
+          envs: DEPLOY_EVENT,DEPLOY_REF,DEPLOY_SHA,DEV_DEPLOY_PATH,STG_DEPLOY_PATH,STG_BU_FILE_PREFIX
           script: |
             set -euo pipefail
-            echo "Changing to deploy path"
-            cd ${{ vars.STG_DEPLOY_PATH }}
+
+            case "$DEPLOY_EVENT" in
+              push)
+                : "${DEV_DEPLOY_PATH:?Set the DEV_DEPLOY_PATH Actions variable}"
+                DEPLOY_PATH="$DEV_DEPLOY_PATH"
+                ;;
+              pull_request)
+                : "${STG_DEPLOY_PATH:?Set the STG_DEPLOY_PATH Actions variable}"
+                DEPLOY_PATH="$STG_DEPLOY_PATH"
+                ;;
+              *)
+                echo "Unsupported deploy event: $DEPLOY_EVENT" >&2
+                exit 1
+                ;;
+            esac
+
+            : "${STG_BU_FILE_PREFIX:?Set the STG_BU_FILE_PREFIX Actions variable}"
+            echo "Changing to deploy path: $DEPLOY_PATH"
+            cd "$DEPLOY_PATH"
+            echo "Backing up database"
+            drush sql:dump > "/var/www/db_backups/${STG_BU_FILE_PREFIX}.${DEPLOY_EVENT}.$(date +'%Y-%m-%d_%H:%M:%S').sql"
             echo "Setting proper permissions"
             chmod -R u+w web/sites/default
-            echo "Pulling latest code"
-            git pull
-
-      - name: Backup Database
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ vars.DEPLOY_HOST }}
-          username: ${{ vars.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
-          script: |
-            set -euo pipefail
-            echo "Changing to deploy path"
-            cd ${{ vars.STG_DEPLOY_PATH }}
-            echo "Backing up database"
-            drush sql:dump > "/var/www/db_backups/${{ vars.STG_BU_FILE_PREFIX }}.$(date +'%Y-%m-%d_%H:%M:%S').sql"
-
-      - name: Install Composer Dependencies
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ vars.DEPLOY_HOST }}
-          username: ${{ vars.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
-          script: |
-            set -euo pipefail
-            echo "Changing to deploy path"
-            cd ${{ vars.STG_DEPLOY_PATH }}
-            echo "Installing composer dependencies"
+            echo "Fetching $DEPLOY_REF and checking out $DEPLOY_SHA"
+            git fetch --no-tags origin "$DEPLOY_REF"
+            git checkout --detach "$DEPLOY_SHA"
+            echo "Installing Composer dependencies"
             composer install
-
-      - name: Install NPM Dependencies
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ vars.DEPLOY_HOST }}
-          username: ${{ vars.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
-          script: |
-            set -euo pipefail
-            echo "Changing to deploy path"
-            cd ${{ vars.STG_DEPLOY_PATH }}
             echo "Installing npm dependencies"
-            npm install
-
-      - name: Build Assets
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ vars.DEPLOY_HOST }}
-          username: ${{ vars.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
-          script: |
-            set -euo pipefail
-            echo "Changing to deploy path"
-            cd ${{ vars.STG_DEPLOY_PATH }}
+            npm ci
             echo "Building assets"
             npm run build
-
-      - name: Clean up node_modules
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ vars.DEPLOY_HOST }}
-          username: ${{ vars.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
-          script: |
-            set -euo pipefail
-            echo "Changing to deploy path"
-            cd ${{ vars.STG_DEPLOY_PATH }}
             echo "Cleaning up node_modules"
             rm -rf node_modules
-            git restore package-lock.json
+            echo "Running drush deploy"
+            drush deploy
 
-      - name: Run Drush Commands
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ vars.DEPLOY_HOST }}
-          username: ${{ vars.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
-          script: |
-            set -euo pipefail
-            echo "Changing to deploy path"
-            cd ${{ vars.STG_DEPLOY_PATH }}
-            echo "Clearing Drupal cache"
-            drush cr
-            echo "Importing config"
-            drush cim -y
-            echo "Updating database"
-            drush updb -y
-            echo "Final cache clear"
-            drush cr
+  lighthouse-ci:
+    needs: deploy
+    uses: ./.github/workflows/lighthouse.yml
+    with:
+      deployment_target: ${{ github.event_name == 'push' && 'dev' || 'stg' }}
+    secrets: inherit

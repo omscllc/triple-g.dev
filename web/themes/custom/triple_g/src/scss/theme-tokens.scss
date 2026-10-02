@@ -1,8 +1,45 @@
-$paper: oklch(98.85% 0.0057 84.57);
+$paper: oklch(93% 0.015 84.57);
 $ink: oklch(31.25% 0.0154 264.32);
 $brass: oklch(75% 0.0861 65.3);
 $copper: oklch(63.43% 0.0747 48.84);
 $bronze: oklch(53.12% 0.0786 64.05);
+$night: oklch(27% 0.018 240);
+$moonlight: oklch(92% 0.01 84.57);
+$brass-dark: oklch(79% 0.12 78);
+$copper-dark: oklch(76% 0.11 48.84);
+$bronze-dark: oklch(83% 0.08 72);
+
+@font-face {
+  font-family: Inter;
+  src: url("/core/modules/navigation/assets/fonts/inter-var.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Steamwreck";
+  src: url("/themes/custom/triple_g/fonts/Steamwreck-Italic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Lora;
+  src: url("/core/themes/olivero/fonts/lora/lora-v14-latin-regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Lora;
+  src: url("/core/themes/olivero/fonts/lora/lora-v14-latin-700.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
 
 :root {
   color-scheme: light;
@@ -13,5 +50,54 @@ $bronze: oklch(53.12% 0.0786 64.05);
   --triple-g-color-bronze: #{$bronze};
   --triple-g-font-ui: "Inter", sans-serif;
   --triple-g-font-reading: "Lora", serif;
+  --triple-g-font-display: "Steamwreck", display;
   --triple-g-gutter: clamp(1rem, 4vw, min(5rem, 25vw));
+}
+
+:root[data-color-mode="dark"] {
+  color-scheme: dark;
+  --triple-g-color-paper: #{$night};
+  --triple-g-color-ink: #{$moonlight};
+  --triple-g-color-brass: #{$brass-dark};
+  --triple-g-color-copper: #{$copper-dark};
+  --triple-g-color-bronze: #{$bronze-dark};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-color-mode]) {
+    color-scheme: dark;
+    --triple-g-color-paper: #{$night};
+    --triple-g-color-ink: #{$moonlight};
+    --triple-g-color-brass: #{$brass-dark};
+    --triple-g-color-copper: #{$copper-dark};
+    --triple-g-color-bronze: #{$bronze-dark};
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 20rem;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--triple-g-color-paper);
+  color: var(--triple-g-color-ink);
+  font-family: var(--triple-g-font-reading);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--triple-g-color-ink);
+  font-family: var(--triple-g-font-ui);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
 }

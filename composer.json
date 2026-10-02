@@ -60,6 +60,7 @@
         "drupal/social_media_links": "^2.10",
         "drupal/splide": "^2.0",
         "drupal/svg_image": "^3.2",
+        "drupal/tagclouds": "^2.0",
         "drupal/twig_tweak": "^3.4",
         "drupal/views_bulk_operations": "^4.3",
         "drush/drush": "^13.6",

@@ -219,9 +219,11 @@ CRUSH.md
 /web/themes/custom/triple_g/css/triple_g.post.min.css
 /web/themes/custom/triple_g/components/**/*.css
 /web/themes/custom/triple_g/css/theme-tokens.css
+/web/themes/custom/triple_g/fonts/bungee-shade-latin-400-normal.woff2
 
 .lighthouseci/
 .lighthouseci/* # ignore everything in the folder
 
 .env
 .envrc
+/web/modules/contrib/resource_hints/tests/*
