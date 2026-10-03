@@ -87,6 +87,8 @@ body {
   background: var(--triple-g-color-paper);
   color: var(--triple-g-color-ink);
   font-family: var(--triple-g-font-reading);
+  -webkit-hyphens: none;
+  hyphens: none;
   line-height: 1.6;
 }
 
