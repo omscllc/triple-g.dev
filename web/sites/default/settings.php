@@ -1,12 +1,22 @@
 <?php
-declare(strict_types=1);
 
-/** @var string $app_root */
-/** @var string $site_path */
+/**
+ * @file
+ * Settings for the Drupal site.
+ *
+ * @var string $app_root
+ * @var string $site_path
+ */
+
+declare(strict_types=1);
 
 use Symfony\Component\Dotenv\Dotenv;
 
-/** @disregard P1011 */
+/**
+ * Load environment variables from the .env file.
+ *
+ * @disregard P1011
+ */
 $env_file = DRUPAL_ROOT . '/../.env';
 if (file_exists($env_file)) {
   $dotenv = new Dotenv();

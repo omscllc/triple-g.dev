@@ -57,7 +57,7 @@
         "drupal/metatag": "^2.1",
         "drupal/no_nbsp": "^1.7",
         "drupal/paragraphs_report": "^2.1",
-        "drupal/pathauto": "^1.13",
+        "drupal/pathauto": "^1.15",
         "drupal/redis": "^1.10",
         "drupal/resource_hints": "^1.0@alpha",
         "drupal/social_media_links": "^2.10",
