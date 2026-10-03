@@ -8,6 +8,9 @@ module:
   block_content: 0
   breakpoint: 0
   ckeditor5: 0
+  ckeditor5_open_new_tab: 0
+  ckeditor5_paste_filter: 0
+  ckeditor_media_resize: 0
   config: 0
   contextual: 0
   datetime: 0
@@ -23,6 +26,8 @@ module:
   layout_builder: 0
   layout_discovery: 0
   link: 0
+  media: 0
+  media_library: 0
   menu_link_content: 0
   menu_ui: 0
   mysql: 0
