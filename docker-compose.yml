@@ -6,7 +6,7 @@ services:
       args:
         PHP_VERSION: ${PHP_VERSION:-8.5}
         WEB_INTERNAL_PORT: ${WEB_INTERNAL_PORT:-80}
-    container_name: ${WEB_CONTAINER_NAME:-montreal2027-web}
+    container_name: ${WEB_CONTAINER_NAME:-tripleg-web}
     depends_on:
       db:
         condition: service_healthy
@@ -22,10 +22,11 @@ services:
       HASH_SALT: ${HASH_SALT:-RandomHashSaltForDevelopmentPurposesOnly}
       VALKEY_HOST: ${VALKEY_HOST:-valkey}
       VALKEY_PORT: ${VALKEY_PORT:-6379}
+      VALKEY_CACHE_PREFIX: ${VALKEY_CACHE_PREFIX:-dev_3G_}
     ports:
-      - "${WEB_EXTERNAL_PORT:-8080}:${WEB_INTERNAL_PORT:-80}"
+      - "${WEB_EXTERNAL_PORT:-8081}:${WEB_INTERNAL_PORT:-80}"
     volumes:
-      - "${HOST_PROJECT_ROOT:-.}:/var/www/html"
+      - "${HOST_PROJECT_ROOT:-/Volumes/MacDaddyPro/Projects/Sites/triple-g.dev}:/var/www/html"
     networks:
       - frontend
       - backend
@@ -33,7 +34,7 @@ services:
 
   db:
     image: mariadb:${MARIADB_VERSION:-11.4}
-    container_name: ${DB_CONTAINER_NAME:-montreal2027-db}
+    container_name: ${DB_CONTAINER_NAME:-tripleg-db}
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
@@ -71,11 +72,11 @@ services:
 
 volumes:
   db_data:
-    name: ${DB_VOLUME_NAME:-montreal2027_db_data}
+    name: ${DB_VOLUME_NAME:-tripleg_db_data}
 
 networks:
   frontend:
-    name: ${FRONTEND_NETWORK_NAME:-montreal2027_frontend}
+    name: ${FRONTEND_NETWORK_NAME:-tripleg_frontend}
   backend:
-    name: ${BACKEND_NETWORK_NAME:-montreal2027_backend}
+    name: ${BACKEND_NETWORK_NAME:-tripleg_backend}
     internal: true
