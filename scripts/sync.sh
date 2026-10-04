@@ -56,6 +56,9 @@ BU_FILENAME_PREFIX="${BU_FILENAME_PREFIX:-m2027-local}"
 # Directory to sync
 REMOTE_DIR="${REMOTE_ROOT}/web/assets/"
 
+# Path to PHP
+PHP_PATH="${PHP_PATH:-/usr/bin/php}"
+
 # Determine drush command based on environment type
 APP_ENV_TYPE="${APP_ENV_TYPE:-docker}"
 if [ "$APP_ENV_TYPE" = "docker" ]; then
@@ -117,7 +120,7 @@ cd "${PROJECT_ROOT}"
 
 if [ "$SYNC_LOCAL" != "true" ]; then
     echo "Downloading remote database..."
-    ssh "${REMOTE_USER}@${SYNC_FROM}" -i "${SSH_KEY}" -p "${SSH_PORT}" "(cd ${REMOTE_ROOT} && /var/nfph-opt/alt/php83/usr/bin/php ./vendor/bin/drush.php sql:dump)" > dump.sql
+    ssh "${REMOTE_USER}@${SYNC_FROM}" -i "${SSH_KEY}" -p "${SSH_PORT}" "(cd ${REMOTE_ROOT} && ${PHP_PATH} ./vendor/bin/drush.php sql:dump)" > dump.sql
 fi
 
 if [ ! -f "$INSTALL_FLAG" ]; then
