@@ -38,21 +38,24 @@ Map out configuration for the following native architectural structures:
    - Display Format: Unformatted list of fields outputting only: Authored On date, Title (clickable link), and Body (trimmed summary or excerpt).
 
 ## Coding Requirements
-- The use of `declare(strict_types=1);` in `settings.php` is required.
+- The use of `declare(strict_types=1);` in `settings.php` and all custom PHP classes is required.
 - DotEnv **will** be enabled and used to inject values such as database credentials, hash keys, or any setting that could be different in a development environment, for example.
-- A scrict OOP architecture will be used. The use of procedural `.module` and `.theme` files are prohibited. All theme logic must leverage OOP hooks.
-- **Enforce PHP Attributes over YAML:** Stop writing boilerplate discovery metadata.
-  - **Routing:** Routes should be declared directly inside Controller and Form classes using native Symfony Route Attributes, rendering legacy routing.yml files largely obsolete for new code.
-  - **Bundle Classes:** Utilize the new Bundle Attributes to map entities directly to dedicated bundle classes, bypassing old hook_entity_type_info_alter() mechanisms.
-- **Miminimum permitted PHP version:** `8.5`.
-- **HTMX First for Dynamic UI:** The use of HTMX attributes over custom jQuery AJAX or Drupal’s legacy core/drupal.ajax library for asynchronous interface interactions is required.
-- **Enforce Vanilla JS & once():** If custom JavaScript is required, the use of jQuery dependences is forbidden. ES6+ native `fetch()` and the standalone `once()` library will be used for modern request handling and DOM event binding.
+- A strict OOP architecture will be used. The use of procedural `.module` and `.theme` files is prohibited. All hook logic and theme alterations must leverage class-based OOP hooks using `#[Drupal\Core\Hook\Attribute\Hook]`.
+- **Enforce PHP Attributes over YAML:** Stop writing boilerplate discovery metadata:
+  - **Routing:** Routes must be declared directly inside Controller and Form classes using native Symfony Route Attributes (`#[Symfony\Component\Routing\Attribute\Route]`), rendering legacy `*.routing.yml` files obsolete for new code.
+  - **Bundle Classes:** Utilize the `#[Drupal\Core\Entity\Attribute\Bundle]` attribute to map entities directly to dedicated bundle classes, bypassing legacy `hook_entity_type_info_alter()` mechanisms.
+  - **Single Directory Components (SDC):** SDC metadata must strictly follow core standards using `[component-name].component.yml` alongside the component's `.twig` and `.css` files.
+- **Minimum permitted PHP version:** `8.4`.
+- **HTMX First for Dynamic UI:** The use of HTMX attributes over custom jQuery AJAX or Drupal’s legacy `core/drupal.ajax` library for asynchronous interface interactions is required.
+- **Enforce Vanilla JS & once():** If custom JavaScript is required, the use of jQuery dependencies is forbidden. ES6+ native `fetch()` and the standalone `once()` library will be used for modern request handling and DOM event binding.
+- **Architecture Discovery:** Consult `ARCHITECTURE.md` for active module namespaces, component directories, and bundle classes before scanning or generating files.
+- **Single Source of Truth:** Always inspect and adhere to `ARCHITECTURE.md` before resolving namespaces, finding directories, scaffolding components, or running commands.
 
 ## Guardrails & Quality Enforcement
 - **Strict Exclusions:** Absolutely no heavy visual layout builders, multi-column grid sub-themes, or unnecessary third-party framework dependencies. Keep it ultra-lightweight and native to Drupal core.
 - **Edge Padding:** Ensure text properties transition down to compact mobile viewports smoothly with explicit padding values on layout borders so characters never collide with physical screen edges.
 - **Semantic Continuity:** Always provide contextually relevant, structurally complex article mock text inside snippets rather than generic "Lorem Ipsum" to properly validate layout line heights and nested subhead flows.
 - **Minimum Drupal Version:** The minimum version of Drupal allowed is `11.3.0`.
-- **PHPStan (Level 6+):** Enforce strict type safety and deprecation detection. 
-- **Drupal Coder (phpcs):** Configure coder_sniffer using the Drupal and DrupalPractice rule sets. 
-- **Core Test Suite Acceleration:** Take advantage of the new **HTTP Kernel UI Helper Trait**
+- **PHPStan (Level 6+):** Enforce strict type safety and deprecation detection.
+- **Drupal Coder (phpcs):** Configure `coder_sniffer` using the `Drupal` and `DrupalPractice` rule sets.
+- **Core Test Suite Acceleration:** Take advantage of the new **HTTP Kernel UI Helper Trait**.

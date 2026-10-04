@@ -6,5 +6,89 @@
   "php.files.exclude": {
     "web/core/modules/system/tests/modules/router_test_directory/**": true,
     "web/modules/contrib/resource_hints/tests/**": true
+  },
+  // --- File Nesting & Explorer Cleanliness ---
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.component.yml": "${capture}.twig, ${capture}.css, ${capture}.js",
+    "composer.json": "composer.lock, phpunit.xml*, phpstan.neon*, .twig-cs-fixer.php"
+  },
+
+  // --- Exclude Core & Vendor from Watchers & Global Search ---
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/vendor/**": true,
+    "**/web/core/**": true,
+    "**/web/sites/*/files/**": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/vendor": true,
+    "**/web/core": true,
+    "**/web/sites/*/files": true
+  },
+
+  // --- Copilot Context & File Indexing Limits ---
+  // Excludes large third-party directories from Copilot codebase indexing to save context tokens
+  "github.copilot.chat.scopeSelection": true,
+  "github.copilot.advanced": {
+    "codeSearch": {
+      "exclude": [
+        "**/vendor/**",
+        "**/web/core/**",
+        "**/node_modules/**",
+        "**/web/sites/*/files/**"
+      ]
+    }
+  },
+
+  // --- PHP Language Server & Environment ---
+  "php.validate.executablePath": "php",
+  "intelephense.environment.phpVersion": "8.4.0",
+  "intelephense.files.maxSize": 5000000,
+  "intelephense.files.exclude": [
+    "**/.git/**",
+    "**/node_modules/**",
+    "**/vendor/**",
+    "**/web/core/**",
+    "**/web/sites/*/files/**"
+  ],
+
+  // --- Linter Integrations (PHPCS, Stylelint, ESLint) ---
+  "phpcs.enable": true,
+  "phpcs.standard": "Drupal,DrupalPractice",
+  "phpcs.executablePath": "vendor/bin/phpcs",
+
+  "stylelint.enable": true,
+  "stylelint.validate": ["css", "scss"],
+
+  "eslint.enable": true,
+  "eslint.workingDirectories": [
+    "web/themes/custom/triple_g"
+  ],
+
+  // --- Twig Formatting & Association ---
+  "files.associations": {
+    "*.twig": "twig",
+    "*.component.yml": "yaml"
+  },
+
+  // --- Auto-Format on Save ---
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   }
 }

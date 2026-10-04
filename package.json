@@ -20,6 +20,9 @@
     "build:js": "npm-run-all concat:js minify:js clean:js",
     "watch:js": "while true; do find web/themes/custom/triple_g/src/js -name '*.js' | xargs concat -o web/themes/custom/triple_g/js/triple_g.js; sleep 2; done",
     "browser-sync": "browser-sync start --proxy 'triple-g.local:8080' --files 'web/themes/custom/triple_g/css/*.css, web/themes/custom/triple_g/components/**/*.css, web/themes/custom/triple_g/js/*.min.js, web/themes/custom/triple_g/templates/**/*.twig, web/themes/custom/triple_g/**/*.php' --no-open --no-notify --no-ghost-mode --reload-delay 300",
+    "lint:css": "stylelint 'components/**/*.css' 'src/scss/**/*.scss'",
+    "lint:js": "eslint 'components/**/*.js'",
+    "lint": "npm run lint:css && npm run lint:js",
     "build": "npm-run-all build:css build:js",
     "watch": "npm-run-all -p watch:css watch:js"
   },
@@ -42,10 +45,16 @@
     "browser-sync": "^3.0.4",
     "concat": "^1.0.3",
     "css-minify": "^2.1.0",
+    "eslint": "^10.12.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-drupal": "^0.3.1",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.38",
     "postcss-cli": "^10.1.0",
     "sass": "^1.89.2",
+    "stylelint": "^17.16.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-declaration-strict-value": "^1.12.1",
     "terser": "^5.43.1"
   },
   "dependencies": {

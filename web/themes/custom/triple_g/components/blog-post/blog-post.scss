@@ -9,20 +9,20 @@
     margin: 0 0 1rem;
     color: var(--triple-g-color-ink);
     font-family: var(--triple-g-font-ui);
-    font-size: 2.5rem;
+    font-size: clamp(2rem, calc(1.9rem + 0.5vw), 2.5rem);
     line-height: 1.15;
   }
 
   &__date {
     color: var(--triple-g-color-bronze);
     font-family: var(--triple-g-font-ui);
-    font-size: 0.875rem;
+    font-size: clamp(0.75rem, calc(0.725rem + 0.125vw), 0.875rem);
   }
 
   &__body {
     color: var(--triple-g-color-ink);
     font-family: var(--triple-g-font-reading);
-    font-size: 1.125rem;
+    font-size: clamp(1rem, calc(0.975rem + 0.125vw), 1.125rem);
     line-height: 1.8;
 
     h2,
