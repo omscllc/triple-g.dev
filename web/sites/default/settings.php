@@ -33,7 +33,7 @@ $settings['redis.connection']['interface'] = 'Predis';
 $settings['redis.connection']['host'] = !empty($_ENV['VALKEY_HOST']) ? $_ENV['VALKEY_HOST'] : 'valkey';
 $settings['redis.connection']['port'] = !empty($_ENV['VALKEY_PORT']) ? (int) $_ENV['VALKEY_PORT'] : 6379;
 $settings['cache']['default'] = 'cache.backend.redis';
-$settings['cache_prefix']['default'] = !empty($_ENV['VALKEY_CACHE_PREFIX']) ? $_ENV['VALKEY_CACHE_PREFIX'] : 'triple_g_dev_';
+$settings['cache_prefix']['default'] = !empty($_ENV['CACHE_PREFIX']) ? $_ENV['CACHE_PREFIX'] : 'triple_g_dev_';
 
 $settings['file_scan_ignore_directories'] = [
   'node_modules',

@@ -1,0 +1,10 @@
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+<div class="journal-feed">
+  {% for row in rows %}
+    <div{{ row.attributes.addClass(default_row_class ? 'views-row' : '', 'journal-feed__item') }}>
+      {{- row.content -}}
+    </div>
+  {% endfor %}
+</div>

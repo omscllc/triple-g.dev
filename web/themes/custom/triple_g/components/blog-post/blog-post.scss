@@ -19,7 +19,16 @@
     font-size: clamp(0.75rem, calc(0.725rem + 0.125vw), 0.875rem);
   }
 
+  &__tags {
+    margin-block-start: 1rem;
+
+    &:has(.tag-list:empty) {
+      display: none;
+    }
+  }
+
   &__body {
+    width: min(100%, clamp(54ch, 40vw, 75ch));
     color: var(--triple-g-color-ink);
     font-family: var(--triple-g-font-reading);
     font-size: clamp(1rem, calc(0.975rem + 0.125vw), 1.125rem);

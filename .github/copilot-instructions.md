@@ -13,9 +13,9 @@ Act as an expert Drupal 11 Frontend Architect and Systems Engineer specializing 
 ## Design System & Visual Vibe (Theming tokens)
 - **Aesthetic Vibe:** Steampunk Engineer / Academic Laboratory Notebook. A calculated balance of cozy typography paired with rigid, industrial layout mechanics.
 - **Color Palette (Sourced from Assets):**
-  - **Background:** Soft Cream / Antique Parchment (`#FDFBF7`) to prevent eye strain.
-  - **Primary Base Text & Outlines:** Deep Antique Oil / Charcoal (`#2D3139`).
-  - **Accent Colors:** Polished Brass (`#D4A373`), Industrial Copper (`#B07D62`), and Aged Bronze (`#8C6239`).
+  - **Background:** Soft Cream / Antique Parchment (`oklch(93% 0.015 84.57)`) to prevent eye strain.
+  - **Primary Base Text & Outlines:** Deep Antique Oil / Charcoal (`oklch(31.25% 0.0154 264.32)`).
+  - **Accent Colors:** Polished Brass (`oklch(75% 0.0861 65.3)`), Industrial Copper (`oklch(63.43% 0.0747 48.84)`), and Aged Bronze (`oklch(53.12% 0.0786 64.05)`).
 - **Typography Pairing:**
   - **Headings & UI Metadata:** Use `Inter` (Sans-Serif) for H1, H2, H3 elements, site navigation, category tags, and publication dates to establish a crisp, engineered structural anchor.
   - **Body Text:** Use `Lora` (Serif) for all article paragraphs to maximize long-form reading comfort. Monospaced type is strictly forbidden for body copy.

@@ -11,3 +11,5 @@ slots:
   body:
     title: Article body
     required: true
+  tags:
+    title: Tags

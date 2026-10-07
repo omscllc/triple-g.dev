@@ -227,3 +227,15 @@ CRUSH.md
 .env
 .envrc
 /web/modules/contrib/resource_hints/tests/*
+/.notes/*
+
+# Tool caches (never commit)
+/.twig-cs-fixer.cache
+/.phpunit.result.cache
+/.phpcs-cache
+/.php-cs-fixer.cache
+/.stylelintcache
+/.eslintcache
+/.phpstan.cache
+/.sass-cache/
+/.cache/

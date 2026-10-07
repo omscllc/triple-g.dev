@@ -22,7 +22,7 @@ services:
       HASH_SALT: ${HASH_SALT:-RandomHashSaltForDevelopmentPurposesOnly}
       VALKEY_HOST: ${VALKEY_HOST:-valkey}
       VALKEY_PORT: ${VALKEY_PORT:-6379}
-      VALKEY_CACHE_PREFIX: ${VALKEY_CACHE_PREFIX:-dev_3G_}
+      CACHE_PREFIX: ${CACHE_PREFIX:-dev_3G_}
     ports:
       - "${WEB_EXTERNAL_PORT:-8081}:${WEB_INTERNAL_PORT:-80}"
     volumes:

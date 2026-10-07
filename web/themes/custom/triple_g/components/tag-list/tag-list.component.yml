@@ -1,0 +1,15 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Tag List
+status: stable
+props:
+  type: object
+  properties:
+    modifier:
+      type: string
+      title: BEM modifier
+      description: Optional modifier. "clamped" limits the list to two rows for uniform card heights; "cloud" neutralises the Tagclouds module level sizing.
+      enum: [clamped, cloud]
+slots:
+  items:
+    title: Tag links
+    description: One or more anchor elements.

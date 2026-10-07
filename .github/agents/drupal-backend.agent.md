@@ -1,7 +1,7 @@
 ---
 name: drupal-backend
 description: Expert in Drupal 11 strict OOP backend architecture, PHP attributes, custom Services, and Bundle classes.
-tools: [code_search, readfile, terminal]
+tools: [read, search, edit, execute]
 ---
 
 # Role & Context

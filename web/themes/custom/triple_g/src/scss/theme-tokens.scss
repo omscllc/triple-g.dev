@@ -1,13 +1,13 @@
-$paper: oklch(93% 0.015 84.57);
-$ink: oklch(31.25% 0.0154 264.32);
-$brass: oklch(75% 0.0861 65.3);
-$copper: oklch(63.43% 0.0747 48.84);
-$bronze: oklch(53.12% 0.0786 64.05);
-$night: oklch(27% 0.018 240);
-$moonlight: oklch(92% 0.01 84.57);
-$brass-dark: oklch(79% 0.12 78);
-$copper-dark: oklch(76% 0.11 48.84);
-$bronze-dark: oklch(83% 0.08 72);
+$paper: oklch(93% 0.015 84.57deg);
+$ink: oklch(31.25% 0.0154 264.32deg);
+$brass: oklch(75% 0.0861 65.3deg);
+$copper: oklch(63.43% 0.0747 48.84deg);
+$bronze: oklch(53.12% 0.0786 64.05deg);
+$night: oklch(27% 0.018 240deg);
+$moonlight: oklch(92% 0.01 84.57deg);
+$brass-dark: oklch(79% 0.12 78deg);
+$copper-dark: oklch(76% 0.11 48.84deg);
+$bronze-dark: oklch(83% 0.08 72deg);
 
 @font-face {
   font-family: Inter;
@@ -18,7 +18,7 @@ $bronze-dark: oklch(83% 0.08 72);
 }
 
 @font-face {
-  font-family: "Steamwreck";
+  font-family: Steamwreck;
   src: url("/themes/custom/triple_g/fonts/Steamwreck-Italic.ttf") format("truetype");
   font-style: italic;
   font-weight: 400;
@@ -43,6 +43,7 @@ $bronze-dark: oklch(83% 0.08 72);
 
 :root {
   color-scheme: light;
+
   --triple-g-color-paper: #{$paper};
   --triple-g-color-ink: #{$ink};
   --triple-g-color-brass: #{$brass};
@@ -51,11 +52,19 @@ $bronze-dark: oklch(83% 0.08 72);
   --triple-g-font-ui: "Inter", sans-serif;
   --triple-g-font-reading: "Lora", serif;
   --triple-g-font-display: "Steamwreck", display;
-  --triple-g-gutter: clamp(1rem, 4vw, min(5rem, 25vw));
+  --triple-g-gutter: clamp(1rem, 4vw, 5rem);
+}
+
+// From 64rem up, the gutter never drops below 5rem and never exceeds 25vw.
+@media (width >= 64rem) {
+  :root {
+    --triple-g-gutter: clamp(5rem, 6vw, 25vw);
+  }
 }
 
 :root[data-color-mode="dark"] {
   color-scheme: dark;
+
   --triple-g-color-paper: #{$night};
   --triple-g-color-ink: #{$moonlight};
   --triple-g-color-brass: #{$brass-dark};
@@ -66,40 +75,11 @@ $bronze-dark: oklch(83% 0.08 72);
 @media (prefers-color-scheme: dark) {
   :root:not([data-color-mode]) {
     color-scheme: dark;
+
     --triple-g-color-paper: #{$night};
     --triple-g-color-ink: #{$moonlight};
     --triple-g-color-brass: #{$brass-dark};
     --triple-g-color-copper: #{$copper-dark};
     --triple-g-color-bronze: #{$bronze-dark};
   }
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  min-width: 20rem;
-  min-height: 100vh;
-  margin: 0;
-  background: var(--triple-g-color-paper);
-  color: var(--triple-g-color-ink);
-  font-family: var(--triple-g-font-reading);
-  -webkit-hyphens: none;
-  hyphens: none;
-  line-height: 1.6;
-}
-
-h1,
-h2,
-h3 {
-  color: var(--triple-g-color-ink);
-  font-family: var(--triple-g-font-ui);
-  line-height: 1.2;
-}
-
-h1 {
-  font-size: 2.5rem;
 }

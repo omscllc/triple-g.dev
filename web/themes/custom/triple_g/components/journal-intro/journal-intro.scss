@@ -1,11 +1,11 @@
 .journal-intro {
-  max-width: 108rem;
-  margin-inline: auto;
+  width: 100%;
   padding-block: 3.75rem 3rem;
+  padding-inline: var(--triple-g-gutter);
   border-block-end: 3px double var(--triple-g-color-brass);
 
   &__main {
-    max-width: 70rem;
+    width: 100%;
   }
 
   &__title h1 {
@@ -19,7 +19,7 @@
   }
 
   &__description {
-    max-width: 54ch;
+    width: min(100%, clamp(54ch, 40vw, 75ch));
     margin-block-start: 1rem;
     font-family: var(--triple-g-font-reading);
     font-size: clamp(1rem, calc(0.97rem + 0.15vw), 1.15rem);

@@ -1,0 +1,20 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Pager
+status: stable
+props:
+  type: object
+  required:
+    - heading_id
+    - heading_level
+  properties:
+    heading_id:
+      type: string
+      title: Heading ID
+    heading_level:
+      type: string
+      title: Heading element
+      enum: [h2, h3, h4, h5, h6]
+slots:
+  items:
+    title: Pager items
+    description: List items (li.pager__item) built by the pager theme template.

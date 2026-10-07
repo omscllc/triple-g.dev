@@ -1,6 +1,18 @@
 $schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Blog Post Card
 status: stable
+props:
+  type: object
+  required:
+    - url
+    - title_text
+  properties:
+    url:
+      type: string
+      title: Post URL
+    title_text:
+      type: string
+      title: Post title (plain text, used for the accessible link label)
 slots:
   authored_on:
     title: Authored On
@@ -11,3 +23,5 @@ slots:
   summary:
     title: Summary
     required: true
+  tags:
+    title: Tags

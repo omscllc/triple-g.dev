@@ -34,7 +34,8 @@
   {% block help %}{{ page.help }}{% endblock %}
   {% block content %}
     {% if not is_front %}
-      {{ page.header }}
+      {# Blog posts render their own h1 inside the article, so omit the page title block. #}
+      {{ node.bundle == 'blog_post' ? page.header|without('triple_g_page_title') : page.header }}
     {% endif %}
     <div class="site-shell__columns">
       {% if page.sidebar_first %}

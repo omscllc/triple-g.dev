@@ -19,9 +19,15 @@ repos:
         entry: vendor/bin/phpcs --standard=phpcs.xml
         language: system
         files: \.(php|module|inc|install|profile|theme)$
-      - id: stylelint-staged
-        name: Stylelint staged stylesheets
-        entry: node_modules/.bin/stylelint
+      - id: phpstan
+        name: PHPStan (level 6)
+        entry: vendor/bin/phpstan analyse --memory-limit=1G --no-progress
         language: system
-        files: \.(css|scss)$
-
+        files: \.(php|module|inc|install|profile|theme|neon)$
+        pass_filenames: false
+      - id: frontend-lint
+        name: Frontend lint (Stylelint + ESLint)
+        entry: npm run lint --silent
+        language: system
+        files: ^web/themes/custom/.*\.(scss|js)$|^(package\.json|eslint\.config\.mjs|\.stylelintrc.*)$
+        pass_filenames: false

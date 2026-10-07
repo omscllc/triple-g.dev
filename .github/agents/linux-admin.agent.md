@@ -1,7 +1,7 @@
 ---
 name: linux-admin
 description: Expert system administrator for enterprise Linux setups, Nginx microcaching, PHP-FPM, and Valkey memory stores.
-tools: [terminal]
+tools: [read, search, edit, execute]
 ---
 
 # Role & Context

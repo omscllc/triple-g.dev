@@ -1,5 +1,9 @@
-{% embed 'triple_g:blog-post-card' with {} %}
-  {% block authored_on %}{{ fields.created.content }}{% endblock %}
-  {% block title %}{{ fields.title.content }}{% endblock %}
+{% embed 'triple_g:blog-post-card' with {
+  url: path('entity.node.canonical', {node: row._entity.id}),
+  title_text: row._entity.label,
+} %}
+  {% block title %}<a href="{{ url }}">{{ fields.title.content }}</a>{% endblock %}
   {% block summary %}{{ fields.body.content }}{% endblock %}
+  {% block tags %}{{ fields.field_tags.content }}{% endblock %}
+  {% block authored_on %}{{ fields.created.content }}{% endblock %}
 {% endembed %}

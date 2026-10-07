@@ -1,18 +1,48 @@
+body {
+  margin: 0;
+}
+
+.site-shell,
+.site-shell *,
+.site-shell *::before,
+.site-shell *::after {
+  box-sizing: border-box;
+}
+
 .site-shell {
   display: flex;
+  min-width: 20rem;
+  min-height: 100vh;
   min-height: 100svh;
   flex-direction: column;
   background: var(--triple-g-color-paper);
   color: var(--triple-g-color-ink);
+  font-family: var(--triple-g-font-reading);
+  hyphens: none;
+  line-height: 1.6;
+
+  h1,
+  h2,
+  h3 {
+    color: var(--triple-g-color-ink);
+    font-family: var(--triple-g-font-ui);
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: clamp(2rem, calc(1.5rem + 2vw), 3.75rem);
+  }
 
   &__header {
     border-block-end: 1px solid var(--triple-g-color-brass);
+
+    // Keep header controls compact on wide screens; content uses the full layout gutter.
     padding: 0.75rem clamp(1rem, 2vw, 2rem);
   }
 
   &__header-inner {
     display: grid;
-    width: min(100%, 120rem);
+    width: 100%;
     margin-inline: auto;
     align-items: center;
     grid-template-columns: auto minmax(0, 1fr) auto auto;
@@ -156,7 +186,7 @@
   &__breadcrumb,
   &__highlighted,
   &__help {
-    width: min(100%, 108rem);
+    width: 100%;
     margin-inline: auto;
     padding-inline: var(--triple-g-gutter);
 
@@ -220,7 +250,7 @@
 
   &__main {
     display: flex;
-    width: min(100%, 108rem);
+    width: 100%;
     margin-inline: auto;
     padding: 0 var(--triple-g-gutter) 5rem;
     flex-direction: column;
@@ -280,18 +310,6 @@
         margin-block-start: 0.15rem;
         color: var(--triple-g-color-bronze);
         font-size: clamp(0.7rem, calc(0.69rem + 0.05vw), 0.75rem);
-      }
-
-      .tagclouds-term {
-        margin: 0 0.65rem 0.35rem 0;
-      }
-
-      a.tagclouds {
-        color: var(--triple-g-color-ink);
-        font-family: var(--triple-g-font-reading);
-        line-height: 1.5;
-        text-decoration-color: var(--triple-g-color-copper);
-        text-underline-offset: 0.15em;
       }
     }
 
@@ -431,7 +449,7 @@
 
   &__footer-inner {
     display: flex;
-    width: min(100%, 108rem);
+    width: 100%;
     margin-inline: auto;
     align-items: center;
     justify-content: flex-end;
@@ -447,7 +465,7 @@
   @media (width <= 48rem) {
     &__header-inner {
       align-items: flex-start;
-      grid-template-columns: auto minmax(0, 1fr);
+      grid-template-columns: max-content minmax(0, 1fr);
       gap: 1rem;
     }
 
@@ -466,14 +484,14 @@
     }
 
     &__navigation {
-      grid-column: 1;
+      grid-column: 1 / -1;
       grid-row: 2;
       justify-self: start;
     }
 
     &__account {
-      grid-column: 2;
-      grid-row: 2;
+      grid-column: 1 / -1;
+      grid-row: 3;
       justify-self: end;
     }
 
@@ -509,7 +527,7 @@
 
   @media (width <= 30rem) {
     &__header-inner {
-      grid-template-columns: auto minmax(0, 1fr);
+      grid-template-columns: max-content minmax(0, 1fr);
       gap: 0.5rem 1rem;
     }
 

@@ -1,0 +1,57 @@
+.pager {
+  margin-block: clamp(1.5rem, 3vw, 3rem) 0;
+  font-family: var(--triple-g-font-ui);
+  font-size: clamp(0.8rem, calc(0.78rem + 0.1vw), 0.9rem);
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    display: inline-flex;
+    min-inline-size: 2.5rem;
+    min-block-size: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 0.75rem;
+    border: 1px solid var(--triple-g-color-brass);
+    color: var(--triple-g-color-ink);
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+      border-color: var(--triple-g-color-copper);
+      background: var(--triple-g-color-brass);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--triple-g-color-bronze);
+      outline-offset: 2px;
+    }
+  }
+
+  &__item--current &__link {
+    border-color: var(--triple-g-color-bronze);
+    background: var(--triple-g-color-bronze);
+    color: var(--triple-g-color-paper);
+    font-weight: 700;
+  }
+
+  &__item--ellipsis {
+    min-inline-size: 1.5rem;
+    color: var(--triple-g-color-bronze);
+    text-align: center;
+  }
+}

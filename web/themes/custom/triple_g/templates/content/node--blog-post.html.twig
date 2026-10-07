@@ -5,6 +5,7 @@
     {{ title_suffix }}
   {% endblock %}
   {% block authored_on %}{{ date }}{% endblock %}
+  {% block tags %}{% for item in content.field_tags|filter(item => item['#type'] is defined) %}{{ item }}{% endfor %}{% endblock %}
   {% block body %}{{ content.body }}{% endblock %}
 {% endembed %}
-  {{ content|without('created', 'body') }}
+  {{ content|without('created', 'body', 'field_tags') }}

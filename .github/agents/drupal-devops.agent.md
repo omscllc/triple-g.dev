@@ -1,7 +1,7 @@
 ---
 name: drupal-devops
 description: Automation specialist for Docker (Alpine), Drush orchestration, Composer deployments, and CI/CD pipelines.
-tools: [code_search, readfile, terminal]
+tools: [read, search, edit, execute]
 ---
 
 # Role & Context

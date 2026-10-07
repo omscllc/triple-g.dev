@@ -1,7 +1,16 @@
 <article{{ attributes.addClass('blog-card') }}>
   <header class="blog-card__header">
-    <div class="blog-card__date">{% block authored_on %}{% endblock %}</div>
     <h2 class="blog-card__title">{% block title %}{% endblock %}</h2>
   </header>
   <div class="blog-card__summary">{% block summary %}{% endblock %}</div>
+  <div class="blog-card__tags">
+    {% set tags_markup %}{% block tags %}{% endblock %}{% endset %}
+    {% embed 'triple_g:tag-list' with {modifier: 'clamped'} %}
+      {% block items %}{{ tags_markup }}{% endblock %}
+    {% endembed %}
+  </div>
+  <footer class="blog-card__footer">
+    <div class="blog-card__date">{% block authored_on %}{% endblock %}</div>
+    <a class="blog-card__more" href="{{ url }}">{{ 'Read more'|t }}<span class="visually-hidden"> {{ 'about @title'|t({'@title': title_text}) }}</span></a>
+  </footer>
 </article>

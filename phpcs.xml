@@ -13,6 +13,10 @@
   <exclude-pattern>*/docs/*</exclude-pattern>
   <exclude-pattern>*/node_modules/*</exclude-pattern>
   <exclude-pattern>*rules_export.txt</exclude-pattern>
+  <!-- Generated build output (gitignored). -->
+  <exclude-pattern>*.min.js</exclude-pattern>
+  <exclude-pattern>*/components/*/*.css</exclude-pattern>
+  <exclude-pattern>*/themes/custom/*/css/*</exclude-pattern>
 
   <arg name="extensions" value="php,module,inc,install,test,profile,theme,css,info,txt,md,yml"/>
   <!-- For colored cli output -->

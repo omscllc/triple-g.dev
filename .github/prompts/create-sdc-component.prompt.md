@@ -27,8 +27,8 @@ Requirements:
    - Scope all rules strictly to BEM class selectors. Do not target bare tag names or write global overrides.
    - Apply fluid typography and spacing via `clamp()` and viewport units (`vw`).
    - Utilize project theme tokens from `.github/copilot-instructions.md`:
-     - Background: `#FDFBF7`
-     - Charcoal text: `#2D3139`
-     - Accents: Brass (`#D4A373`), Copper (`#B07D62`), Bronze (`#8C6239`)
+     - Background: `oklch(93% 0.015 84.57)`
+     - Charcoal text: `oklch(31.25% 0.0154 264.32)`
+     - Accents: Brass (`oklch(75% 0.0861 65.3)`), Copper (`oklch(63.43% 0.0747 48.84)`), Bronze (`oklch(53.12% 0.0786 64.05)`)
      - Fonts: `Inter` for headers/metadata; `Lora` for body copy.
    - Ensure edge gutters maintain a minimum of `5rem` horizontal padding without exceeding 25% of viewport width.

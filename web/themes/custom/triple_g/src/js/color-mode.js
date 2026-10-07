@@ -10,58 +10,59 @@
     return root.dataset.colorMode || (colorScheme.matches ? 'dark' : 'light');
   }
 
-  function updateToggles() {
-    document.querySelectorAll(toggleSelector).forEach((toggle) => {
+  function updateToggles(context = document) {
+    context.querySelectorAll(toggleSelector).forEach((toggle) => {
       toggle.setAttribute('aria-pressed', String(getColorMode() === 'dark'));
     });
   }
 
-  try {
-    const savedMode = window.localStorage.getItem(storageKey);
-    if (savedMode === 'dark' || savedMode === 'light') {
-      root.dataset.colorMode = savedMode;
-    }
-  }
-  catch {
-    // Storage may be unavailable; the current page can still follow OS settings.
-  }
-
-  document.addEventListener('click', (event) => {
-    const toggle = event.target instanceof Element
-      ? event.target.closest(toggleSelector)
-      : null;
-
-    if (!toggle) {
-      return;
-    }
-
-    const nextMode = getColorMode() === 'dark' ? 'light' : 'dark';
-    root.dataset.colorMode = nextMode;
-
+  function saveColorMode(mode) {
     try {
-      window.localStorage.setItem(storageKey, nextMode);
+      window.localStorage.setItem(storageKey, mode);
     }
     catch {
-      // Keep the selection for the current page when storage is unavailable.
+      // Storage may be unavailable; the current page still uses the selected mode.
     }
+  }
 
-    updateToggles();
-  });
+  Drupal.behaviors.tripleGColorMode = {
+    attach(context, settings) {
+      if (once('triple-g-color-mode-init', root).length) {
+        try {
+          const savedMode = window.localStorage.getItem(storageKey);
+          if (savedMode === 'dark' || savedMode === 'light') {
+            root.dataset.colorMode = savedMode;
+          }
+        }
+        catch {
+          // Storage may be unavailable; the current page can still follow OS settings.
+        }
 
-  document.addEventListener('DOMContentLoaded', updateToggles, { once: true });
+        const updateFromSystemPreference = () => {
+          if (!root.hasAttribute('data-color-mode')) {
+            updateToggles();
+          }
+        };
 
-  const updateFromSystemPreference = () => {
-    if (!root.hasAttribute('data-color-mode')) {
-      updateToggles();
-    }
+        if (typeof colorScheme.addEventListener === 'function') {
+          colorScheme.addEventListener('change', updateFromSystemPreference);
+        }
+        else {
+          colorScheme.addListener(updateFromSystemPreference);
+        }
+
+        root.dataset.colorModeReady = 'true';
+      }
+
+      once('triple-g-color-mode-toggle', toggleSelector, context).forEach((toggle) => {
+        toggle.setAttribute('aria-pressed', String(getColorMode() === 'dark'));
+        toggle.addEventListener('click', () => {
+          const nextMode = getColorMode() === 'dark' ? 'light' : 'dark';
+          root.dataset.colorMode = nextMode;
+          saveColorMode(nextMode);
+          updateToggles();
+        });
+      });
+    },
   };
-
-  if (typeof colorScheme.addEventListener === 'function') {
-    colorScheme.addEventListener('change', updateFromSystemPreference);
-  }
-  else {
-    colorScheme.addListener(updateFromSystemPreference);
-  }
-
-  root.dataset.colorModeReady = 'true';
 })();

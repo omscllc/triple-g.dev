@@ -27,7 +27,7 @@ final class CopyrightNoticeBlock extends BlockBase implements ContainerFactoryPl
   /**
    * Constructs a copyright notice block.
    *
-   * @param array $configuration
+   * @param array<string, mixed> $configuration
    *   The plugin configuration.
    * @param string $plugin_id
    *   The plugin ID.
@@ -42,6 +42,8 @@ final class CopyrightNoticeBlock extends BlockBase implements ContainerFactoryPl
 
   /**
    * {@inheritdoc}
+   *
+   * @phpstan-param array<string, mixed> $configuration
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
@@ -54,6 +56,8 @@ final class CopyrightNoticeBlock extends BlockBase implements ContainerFactoryPl
 
   /**
    * {@inheritdoc}
+   *
+   * @phpstan-return array<string, mixed>
    */
   public function defaultConfiguration(): array {
     return parent::defaultConfiguration() + [
@@ -63,6 +67,9 @@ final class CopyrightNoticeBlock extends BlockBase implements ContainerFactoryPl
 
   /**
    * {@inheritdoc}
+   *
+   * @phpstan-param array<string, mixed> $form
+   * @phpstan-return array<string, mixed>
    */
   public function blockForm($form, FormStateInterface $form_state): array {
     $form = parent::blockForm($form, $form_state);
@@ -79,6 +86,8 @@ final class CopyrightNoticeBlock extends BlockBase implements ContainerFactoryPl
 
   /**
    * {@inheritdoc}
+   *
+   * @phpstan-param array<string, mixed> $form
    */
   public function blockSubmit($form, FormStateInterface $form_state): void {
     parent::blockSubmit($form, $form_state);
@@ -87,6 +96,8 @@ final class CopyrightNoticeBlock extends BlockBase implements ContainerFactoryPl
 
   /**
    * {@inheritdoc}
+   *
+   * @phpstan-return array<string, mixed>
    */
   public function build(): array {
     $now = new \DateTimeImmutable();

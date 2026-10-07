@@ -13,7 +13,6 @@
     "*.component.yml": "${capture}.twig, ${capture}.css, ${capture}.js",
     "composer.json": "composer.lock, phpunit.xml*, phpstan.neon*, .twig-cs-fixer.php"
   },
-
   // --- Exclude Core & Vendor from Watchers & Global Search ---
   "files.watcherExclude": {
     "**/.git/objects/**": true,
@@ -30,7 +29,6 @@
     "**/web/core": true,
     "**/web/sites/*/files": true
   },
-
   // --- Copilot Context & File Indexing Limits ---
   // Excludes large third-party directories from Copilot codebase indexing to save context tokens
   "github.copilot.chat.scopeSelection": true,
@@ -44,7 +42,6 @@
       ]
     }
   },
-
   // --- PHP Language Server & Environment ---
   "php.validate.executablePath": "php",
   "intelephense.environment.phpVersion": "8.4.0",
@@ -56,26 +53,24 @@
     "**/web/core/**",
     "**/web/sites/*/files/**"
   ],
-
   // --- Linter Integrations (PHPCS, Stylelint, ESLint) ---
   "phpcs.enable": true,
   "phpcs.standard": "Drupal,DrupalPractice",
   "phpcs.executablePath": "vendor/bin/phpcs",
-
   "stylelint.enable": true,
-  "stylelint.validate": ["css", "scss"],
-
+  "stylelint.validate": [
+    "css",
+    "scss"
+  ],
   "eslint.enable": true,
   "eslint.workingDirectories": [
     "web/themes/custom/triple_g"
   ],
-
   // --- Twig Formatting & Association ---
   "files.associations": {
     "*.twig": "twig",
     "*.component.yml": "yaml"
   },
-
   // --- Auto-Format on Save ---
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
@@ -90,5 +85,11 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "chat.tools.terminal.autoApprove": {
+    "/^php -v$/": {
+      "approve": true,
+      "matchCommandLine": true
+    }
   }
 }

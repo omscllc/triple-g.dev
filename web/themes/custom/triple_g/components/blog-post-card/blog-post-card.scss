@@ -1,11 +1,59 @@
+.journal-feed {
+  display: grid;
+  gap: clamp(1.5rem, 2.5vw, 3rem);
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, clamp(18rem, 20vw, 26rem)), 1fr));
+  padding-block: clamp(1.5rem, 2.5vw, 3rem);
+
+  &__item {
+    min-width: 0;
+  }
+}
+
 .blog-card {
-  border-block-start: 1px solid var(--triple-g-color-brass);
-  padding-block: 2rem;
+  display: flex;
+  height: 100%;
+  padding: clamp(1.25rem, 1.5vw, 2rem);
+  border: 1px solid var(--triple-g-color-brass);
+  border-block-start: 2px solid var(--triple-g-color-copper);
+  flex-direction: column;
+  gap: 1rem;
 
   &__header {
     display: grid;
     gap: 0.75rem;
     align-items: baseline;
+  }
+
+  &__tags {
+    margin-block-start: auto;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block-start: 0.75rem;
+    border-block-start: 1px solid var(--triple-g-color-brass);
+  }
+
+  &__more {
+    color: var(--triple-g-color-bronze);
+    font-family: var(--triple-g-font-ui);
+    font-size: clamp(0.75rem, calc(0.725rem + 0.125vw), 0.875rem);
+    font-weight: 600;
+    text-decoration-color: var(--triple-g-color-copper);
+    text-underline-offset: 0.2em;
+
+    &:hover {
+      color: var(--triple-g-color-ink);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--triple-g-color-bronze);
+      outline-offset: 0.2em;
+    }
   }
 
   &__date {
@@ -15,10 +63,16 @@
   }
 
   &__title {
+    display: -webkit-box;
+    min-block-size: 2lh;
     margin: 0;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
     color: var(--triple-g-color-ink);
     font-family: var(--triple-g-font-ui);
-    font-size: clamp(1.5rem, calc(1.45rem + 0.25vw), 1.75rem);
+    font-size: clamp(1.25rem, calc(1.15rem + 0.35vw), 1.625rem);
     line-height: 1.2;
 
     a {
@@ -34,16 +88,21 @@
   }
 
   &__summary {
-    margin-block-start: 1rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    overflow: hidden;
+    flex: 1;
     color: var(--triple-g-color-ink);
     font-family: var(--triple-g-font-reading);
     font-size: clamp(1rem, calc(0.975rem + 0.125vw), 1.125rem);
-    line-height: 1.75;
-  }
+    line-height: 1.6;
 
-  @media (width >= 48rem) {
-    &__header {
-      grid-template-columns: 10rem minmax(0, 1fr);
+    // Drop the empty spacer paragraphs authors leave in body text.
+    p:empty,
+    p:has(> :only-child:empty) {
+      display: none;
     }
   }
 }

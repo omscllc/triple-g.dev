@@ -5,7 +5,9 @@ import * as sass from 'sass';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const themeRoot = path.join(projectRoot, 'web/themes/custom/triple_g');
-const style = process.env.NODE_ENV === 'production' ? 'compressed' : 'expanded';
+const style = process.env.NODE_ENV === 'production' || process.argv.includes('--compressed')
+  ? 'compressed'
+  : 'expanded';
 let compiledCount = 0;
 
 async function compileScss(sourcePath, outputPath) {

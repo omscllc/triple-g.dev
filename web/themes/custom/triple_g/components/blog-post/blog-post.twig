@@ -2,6 +2,12 @@
   <header class="blog-post__header">
     <div class="blog-post__heading">{% block title %}{% endblock %}</div>
     <div class="blog-post__date">{% block authored_on %}{% endblock %}</div>
+    <div class="blog-post__tags">
+      {% set tags_markup %}{% block tags %}{% endblock %}{% endset %}
+      {% embed 'triple_g:tag-list' %}
+        {% block items %}{{ tags_markup }}{% endblock %}
+      {% endembed %}
+    </div>
   </header>
   <div class="blog-post__body">{% block body %}{% endblock %}</div>
 </article>
