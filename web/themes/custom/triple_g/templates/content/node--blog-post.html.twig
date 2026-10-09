@@ -5,7 +5,13 @@
     {{ title_suffix }}
   {% endblock %}
   {% block authored_on %}{{ date }}{% endblock %}
-  {% block tags %}{% for item in content.field_tags|filter(item => item['#type'] is defined) %}{{ item }}{% endfor %}{% endblock %}
+  {% block tags %}
+    {% if content.field_tags is iterable %}
+      {% for item in content.field_tags|filter(item => item['#type'] is defined) %}
+        {{ item }}
+      {% endfor %}
+    {% endif %}
+  {% endblock %}
   {% block body %}{{ content.body }}{% endblock %}
 {% endembed %}
   {{ content|without('created', 'body', 'field_tags') }}

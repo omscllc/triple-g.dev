@@ -16,7 +16,9 @@
 
     &:hover,
     &:focus-visible {
-      background: var(--triple-g-color-brass);
+      border-color: var(--triple-g-color-ink);
+      background: var(--triple-g-color-ink);
+      color: var(--triple-g-color-paper);
     }
 
     &:focus-visible {

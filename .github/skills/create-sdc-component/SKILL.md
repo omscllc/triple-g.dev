@@ -1,9 +1,8 @@
 ---
 name: create-sdc-component
 description: Scaffold a native Drupal 11 Single Directory Component (SDC) adhering to strict BEM, fluid typography, and design tokens.
-agent: drupal-frontend
+disable-model-invocation: true
 ---
-
 Reference the project architecture defined in #file:ARCHITECTURE.md.
 Generate a complete Single Directory Component (SDC) inside the custom theme under `components/{{component_name}}/`.
 

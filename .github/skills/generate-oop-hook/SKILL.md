@@ -1,9 +1,8 @@
 ---
 name: generate-oop-hook
-description: Implement Drupal 11 class-based hooks using the #[Hook] attribute instead of procedural hook files.
-agent: drupal-backend
+description: Implement Drupal 11 class-based hooks using the
+disable-model-invocation: true
 ---
-
 Reference the project architecture defined in #file:ARCHITECTURE.md.
 Implement the hook `{{hook_name}}` using Drupal 11's class-based OOP hook system.
 

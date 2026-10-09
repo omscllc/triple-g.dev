@@ -313,8 +313,25 @@ body {
       }
     }
 
+    #block-triple-g-page-title h1 {
+      margin: 2.5rem 0 0;
+      padding-block-end: 1rem;
+      border-block-end: 1px solid var(--triple-g-color-brass);
+    }
+
     #block-triple-g-content {
       margin-block-start: 2.5rem;
+    }
+
+    // Taxonomy term pages: the view header only holds markup when the term has a description.
+    .views-element-container > div > header:has(:is(p, ul, ol, h2, h3, img)) {
+      max-width: 58ch;
+      margin-block-end: 1.5rem;
+      padding-inline-start: 1.5rem;
+      border-inline-start: 2px solid var(--triple-g-color-copper);
+      color: var(--triple-g-color-ink);
+      font-family: var(--triple-g-font-reading);
+      font-size: clamp(1rem, calc(0.97rem + 0.15vw), 1.15rem);
     }
 
     .tabs {

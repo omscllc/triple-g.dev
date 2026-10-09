@@ -90,6 +90,7 @@
     "/^php -v$/": {
       "approve": true,
       "matchCommandLine": true
-    }
+    },
+    "printf": true
   }
 }

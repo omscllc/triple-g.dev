@@ -25,7 +25,7 @@
       {% endif %}
       {% for key, item in items.pages %}
         <li class="pager__item{{ current == key ? ' pager__item--current' : '' }}">
-          <a class="pager__link" href="{{ item.href }}" title="{{ current == key ? 'Current page'|t : 'Go to page @key'|t({'@key': key}) }}"{% if current == key %} aria-current="page"{% endif %}{{ item.attributes|without('href', 'title') }}>
+          <a class="pager__link" href="{{ item.href }}" title="{{ current == key ? 'Current page'|t : 'Go to page @key'|t({'@key': key}) }}"{{ item.attributes|without('href', 'title') }}>
             <span class="visually-hidden">{{ 'Page'|t }}</span>
             {{- key -}}
           </a>

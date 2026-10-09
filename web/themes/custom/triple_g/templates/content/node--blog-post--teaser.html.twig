@@ -1,0 +1,15 @@
+{% embed 'triple_g:blog-post-card' with {
+  url: url,
+  title_text: node.label,
+} %}
+  {% block title %}<a href="{{ url }}">{{ label }}</a>{% endblock %}
+  {% block summary %}{{ content.body }}{% endblock %}
+  {% block tags %}
+    {% if content.field_tags is iterable %}
+      {% for item in content.field_tags|filter(item => item['#type'] is defined) %}
+        {{ item }}
+      {% endfor %}
+    {% endif %}
+  {% endblock %}
+  {% block authored_on %}{{ date }}{% endblock %}
+{% endembed %}

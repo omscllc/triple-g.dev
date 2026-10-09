@@ -1,9 +1,8 @@
 ---
 name: generate-bundle-class
 description: Generate a modern Drupal 11 Entity Bundle Class using PHP 8.4+ attributes and strict typing.
-agent: drupal-backend
+disable-model-invocation: true
 ---
-
 Reference the project architecture defined in #file:ARCHITECTURE.md.
 Create a dedicated Entity Bundle Class for the bundle `{{bundle_name}}` of entity type `{{entity_type}}`.
 

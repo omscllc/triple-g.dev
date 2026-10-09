@@ -1,9 +1,8 @@
 ---
 name: verify-code-quality
 description: Run automated PHPStan and PHPCS linters against targeted files and report or fix errors.
-agent: drupal-devops
+disable-model-invocation: true
 ---
-
 Reference the project architecture defined in #file:ARCHITECTURE.md.
 Execute automated code validation on the target file or directory: `{{file_path}}`
 
