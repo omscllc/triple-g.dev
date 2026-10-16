@@ -1,0 +1,12 @@
+services:
+  logger.channel.triple_g_error_pages:
+    class: Drupal\Core\Logger\LoggerChannel
+    factory: ["@logger.factory", "get"]
+    arguments: ["triple_g_error_pages"]
+
+  Drupal\triple_g_error_pages\EventSubscriber\ErrorPageExceptionSubscriber:
+    arguments:
+      - "@twig"
+      - "@logger.channel.triple_g_error_pages"
+    tags:
+      - { name: event_subscriber }

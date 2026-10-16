@@ -28,23 +28,28 @@ jobs:
           DEPLOY_SHA: ${{ github.sha }}
           DEV_DEPLOY_PATH: ${{ vars.DEV_DEPLOY_PATH }}
           STG_DEPLOY_PATH: ${{ vars.STG_DEPLOY_PATH }}
+          DEV_BU_FILE_PREFIX: ${{ vars.DEV_BU_FILE_PREFIX }}
           STG_BU_FILE_PREFIX: ${{ vars.STG_BU_FILE_PREFIX }}
         with:
           host: ${{ vars.DEPLOY_HOST }}
           username: ${{ vars.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_KEY }}
-          envs: DEPLOY_EVENT,DEPLOY_REF,DEPLOY_SHA,DEV_DEPLOY_PATH,STG_DEPLOY_PATH,STG_BU_FILE_PREFIX
+          envs: DEPLOY_EVENT,DEPLOY_REF,DEPLOY_SHA,DEV_DEPLOY_PATH,STG_DEPLOY_PATH,DEV_BU_FILE_PREFIX,STG_BU_FILE_PREFIX
           script: |
             set -euo pipefail
 
             case "$DEPLOY_EVENT" in
               push)
                 : "${DEV_DEPLOY_PATH:?Set the DEV_DEPLOY_PATH Actions variable}"
+                : "${DEV_BU_FILE_PREFIX:?Set the DEV_BU_FILE_PREFIX Actions variable}"
                 DEPLOY_PATH="$DEV_DEPLOY_PATH"
+                BU_FILE_PREFIX="$DEV_BU_FILE_PREFIX"
                 ;;
               pull_request)
                 : "${STG_DEPLOY_PATH:?Set the STG_DEPLOY_PATH Actions variable}"
+                : "${STG_BU_FILE_PREFIX:?Set the STG_BU_FILE_PREFIX Actions variable}"
                 DEPLOY_PATH="$STG_DEPLOY_PATH"
+                BU_FILE_PREFIX="$STG_BU_FILE_PREFIX"
                 ;;
               *)
                 echo "Unsupported deploy event: $DEPLOY_EVENT" >&2
@@ -52,11 +57,10 @@ jobs:
                 ;;
             esac
 
-            : "${STG_BU_FILE_PREFIX:?Set the STG_BU_FILE_PREFIX Actions variable}"
             echo "Changing to deploy path: $DEPLOY_PATH"
             cd "$DEPLOY_PATH"
             echo "Backing up database"
-            drush sql:dump > "/var/www/db_backups/${STG_BU_FILE_PREFIX}.${DEPLOY_EVENT}.$(date +'%Y-%m-%d_%H:%M:%S').sql"
+            drush sql:dump --gzip --results-file="/var/www/db_backups/${BU_FILE_PREFIX}.$(date +'%Y-%m-%d_%H:%M:%S').sql.gz"
             echo "Setting proper permissions"
             chmod -R u+w web/sites/default
             echo "Fetching $DEPLOY_REF and checking out $DEPLOY_SHA"
@@ -72,10 +76,3 @@ jobs:
             rm -rf node_modules
             echo "Running drush deploy"
             drush deploy
-
-  lighthouse-ci:
-    needs: deploy
-    uses: ./.github/workflows/lighthouse.yml
-    with:
-      deployment_target: ${{ github.event_name == 'push' && 'dev' || 'stg' }}
-    secrets: inherit

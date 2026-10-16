@@ -57,6 +57,8 @@
   "phpcs.enable": true,
   "phpcs.standard": "Drupal,DrupalPractice",
   "phpcs.executablePath": "vendor/bin/phpcs",
+  "phpsab.executablePathCS": "/Users/daveweiner/external/Projects/Sites/triple-g.dev/vendor/bin/phpcs",
+  "phpsab.executablePathCBF": "/Users/daveweiner/external/Projects/Sites/triple-g.dev/vendor/bin/phpcbf",
   "stylelint.enable": true,
   "stylelint.validate": [
     "css",
@@ -92,5 +94,6 @@
       "matchCommandLine": true
     },
     "printf": true
-  }
+  },
+  "chat.subagents.allowInvocationsFromSubagents": true,
 }

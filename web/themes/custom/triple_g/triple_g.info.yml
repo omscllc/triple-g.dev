@@ -10,7 +10,6 @@ regions:
   header: Header
   primary_menu: 'Primary menu'
   secondary_menu: 'Secondary menu'
-  breadcrumb: Breadcrumb
   highlighted: Highlighted
   help: Help
   content: Content

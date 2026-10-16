@@ -32,12 +32,13 @@
 
     &:hover,
     &:focus-visible {
-      border-color: var(--triple-g-color-copper);
-      background: var(--triple-g-color-brass);
+      border-color: var(--triple-g-color-ink);
+      background: var(--triple-g-color-ink);
+      color: var(--triple-g-color-paper);
     }
 
     &:focus-visible {
-      outline: 2px solid var(--triple-g-color-bronze);
+      outline: 2px solid var(--triple-g-color-copper);
       outline-offset: 2px;
     }
   }
@@ -53,5 +54,12 @@
     min-inline-size: 1.5rem;
     color: var(--triple-g-color-bronze);
     text-align: center;
+  }
+
+  @media (width <= 36rem) {
+    &__item--first,
+    &__item--last {
+      display: none;
+    }
   }
 }

@@ -38,12 +38,17 @@ module:
   path: 0
   path_alias: 0
   redis: 0
+  search_api: 0
+  search_api_db: 0
   system: 0
   tagclouds: 0
   taxonomy: 0
   text: 0
   token: 0
+  triple_g_error_pages: 0
   triple_g_footer: 0
+  triple_g_pager: 0
+  triple_g_search: 0
   update: 0
   user: 0
   views_ui: 0

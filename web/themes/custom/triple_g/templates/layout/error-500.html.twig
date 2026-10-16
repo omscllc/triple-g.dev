@@ -1,0 +1,70 @@
+{#
+/**
+ * @file
+ * Self-contained 500 page. It deliberately avoids blocks, menus and the
+ * render pipeline so it can still be shown when Drupal is failing.
+ */
+#}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ 'Internal server error'|t }} | {{ 'Geek’s Gadgets and Gizmos'|t }}</title>
+    <link rel="stylesheet" href="/themes/custom/triple_g/css/theme-tokens.css">
+    <link rel="stylesheet" href="/themes/custom/triple_g/components/site-shell/site-shell.css">
+    <link rel="stylesheet" href="/themes/custom/triple_g/components/error-page/error-page.css">
+    <script>
+      try {
+        var mode = window.localStorage.getItem('triple-g-color-mode');
+        if (mode === 'dark' || mode === 'light') {
+          document.documentElement.dataset.colorMode = mode;
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-shell__header" role="banner">
+        <div class="site-shell__header-inner">
+          <a class="site-shell__branding" href="/" rel="home">
+            <img src="/assets/triple-g-logo.png" alt="{{ 'Geek’s Gadgets and Gizmos'|t }}">
+          </a>
+          <div class="site-shell__brand-name">
+            <div id="block-triple-g-site-branding">
+              <a href="/" rel="home">{{ 'Geek’s Gadgets and Gizmos'|t }}</a>
+              {{ 'Musings about gadgets, tools, hobbies, and other things'|t }}
+            </div>
+          </div>
+          <div class="site-shell__navigation">
+            <div>
+              <nav aria-label="{{ 'Main navigation'|t }}">
+                <ul>
+                  <li><a href="/">{{ 'Home'|t }}</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main id="main-content" class="site-shell__main" role="main">
+        {% embed 'triple_g:error-page' with {
+          heading: 'Hmmm…'|t,
+          heading_hidden: '(500, internal server error)'|t,
+          image: '/assets/triple-g-500.png',
+          image_alt: '500, internal server error: a brass machine venting steam'|t,
+          image_width: 2048,
+          image_height: 2048,
+        } %}
+          {% block message %}
+            <p class="error-page__message--left">{{ 'Something went “Bang!” and the blue smoke escaped!'|t }}</p>
+            <p class="error-page__message--left">{{ 'Give us a minute to put the magic smoke back in, and then try again.'|t }}</p>
+          {% endblock %}
+          {% block actions %}
+            <a class="error-page__link" href="/">{{ 'Back to the bench'|t }}</a>
+          {% endblock %}
+        {% endembed %}
+      </main>
+    </div>
+  </body>
+</html>

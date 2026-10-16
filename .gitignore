@@ -239,3 +239,4 @@ CRUSH.md
 /.phpstan.cache
 /.sass-cache/
 /.cache/
+/graphify-out/

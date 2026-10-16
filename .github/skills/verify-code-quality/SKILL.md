@@ -11,7 +11,7 @@ Tasks:
    `vendor/bin/phpstan analyse {{file_path}} --level=6`
 
 2. Run Drupal Coder (phpcs) against standard rulesets:
-   `vendor/bin/phpcs --standard=Drupal,DrupalPractice {{file_path}}`
+   `vendor/bin/phpcs --standard=phpcs.xml {{file_path}}`
 
 3. Inspect command output and exit codes:
    - If warnings or errors are detected, identify the specific line and violation rule.
