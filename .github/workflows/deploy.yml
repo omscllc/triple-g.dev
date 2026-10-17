@@ -60,7 +60,7 @@ jobs:
             echo "Changing to deploy path: $DEPLOY_PATH"
             cd "$DEPLOY_PATH"
             echo "Backing up database"
-            drush sql:dump --gzip --results-file="/var/www/db_backups/${BU_FILE_PREFIX}.$(date +'%Y-%m-%d_%H:%M:%S').sql.gz"
+            drush sql:dump --gzip --result-file="/var/www/db_backups/${BU_FILE_PREFIX}.$(date +'%Y-%m-%d_%H:%M:%S').sql.gz"
             echo "Setting proper permissions"
             chmod -R u+w web/sites/default
             echo "Fetching $DEPLOY_REF and checking out $DEPLOY_SHA"
