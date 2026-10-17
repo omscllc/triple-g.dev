@@ -1,0 +1,10 @@
+<div{{ attributes }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  {% embed 'triple_g:tag-list' with {modifier: 'cloud'} %}
+    {% block items %}{{ content }}{% endblock %}
+  {% endembed %}
+</div>

@@ -23,52 +23,29 @@
         }
     ],
     "require": {
+        "php": ">=8.5",
         "composer/installers": "^2.3",
         "cweagans/composer-patches": "^1.7",
         "drupal/admin_toolbar": "^3.6",
         "drupal/agg_jscss_asyncdefer": "^1.0",
         "drupal/backward_compatibility": "^1.0",
         "drupal/ckeditor5_icons": "^1.2",
+        "drupal/ckeditor5_open_new_tab": "^1.0",
+        "drupal/ckeditor5_paste_filter": "^1.1",
         "drupal/ckeditor5_plugin_pack": "^1.4",
         "drupal/ckeditor_details": "^2.1@beta",
+        "drupal/ckeditor_media_resize": "^1.1",
         "drupal/colorbox": "^2.1",
         "drupal/conditional_fields": "^4.0@alpha",
         "drupal/config_ignore": "^3.3",
         "drupal/convert_bundles": "^3.0@alpha",
-        "drupal/core-composer-scaffold": "^11.2",
-        "drupal/core-project-message": "^11.2",
-        "drupal/core-recipe-unpack": "^11.2",
-        "drupal/core-recommended": "^11.2.3",
+        "drupal/core-composer-scaffold": "^11.3",
+        "drupal/core-project-message": "^11.3",
+        "drupal/core-recipe-unpack": "^11.3",
+        "drupal/core-recommended": "^11.3.0",
         "drupal/easy_breadcrumb": "^2.0",
         "drupal/editor_advanced_link": "^2.3",
         "drupal/entity_embed": "^1.7",
-        "drupal/ept_accordion": "^1.4",
-        "drupal/ept_basic_button": "^1.4",
-        "drupal/ept_block": "^1.4",
-        "drupal/ept_bootstrap_button": "^1.4",
-        "drupal/ept_carousel": "^1.4",
-        "drupal/ept_columns": "^1.4",
-        "drupal/ept_countdown": "^1.4",
-        "drupal/ept_counter": "^1.4",
-        "drupal/ept_cta": "^1.4",
-        "drupal/ept_hero": "^1.4",
-        "drupal/ept_image": "^1.4",
-        "drupal/ept_image_gallery": "^1.4",
-        "drupal/ept_micromodal": "^1.4",
-        "drupal/ept_quote": "^1.4",
-        "drupal/ept_slick_slider": "^1.4",
-        "drupal/ept_slideshow": "^1.4",
-        "drupal/ept_stats": "^1.4",
-        "drupal/ept_tabs": "^1.4",
-        "drupal/ept_text": "^1.4",
-        "drupal/ept_tiles": "^1.4",
-        "drupal/ept_timeline": "^1.4",
-        "drupal/ept_video": "^1.4",
-        "drupal/ept_video_and_image_gallery": "^1.4",
-        "drupal/ept_views": "^1.4",
-        "drupal/ept_webform": "^1.4",
-        "drupal/ept_webform_popup": "^1.4",
-        "drupal/fontawesome": "^3.0",
         "drupal/gin": "^5.0",
         "drupal/layout_library": "^1.0@beta",
         "drupal/layout_paragraphs": "^2.1",
@@ -79,20 +56,22 @@
         "drupal/metatag": "^2.1",
         "drupal/no_nbsp": "^1.7",
         "drupal/paragraphs_report": "^2.1",
-        "drupal/pathauto": "^1.13",
+        "drupal/pathauto": "^1.15",
         "drupal/redis": "^1.10",
         "drupal/resource_hints": "^1.0@alpha",
+        "drupal/search_api": "^1.42",
         "drupal/social_media_links": "^2.10",
         "drupal/splide": "^2.0",
         "drupal/svg_image": "^3.2",
+        "drupal/tagclouds": "^2.0",
         "drupal/twig_tweak": "^3.4",
         "drupal/views_bulk_operations": "^4.3",
         "drush/drush": "^13.6",
         "dweineratl/entity_type_clone": "^99.0",
         "mglaman/composer-drupal-lenient": "^1.0",
-        "omscllc/clean_blog_theme": "dev-develop",
         "predis/predis": "^3.2",
         "ramsey/uuid": "^4.9",
+        "symfony/dotenv": "^7.4",
         "symfony/uid": "^7.3",
         "wikimedia/composer-merge-plugin": "^2.1"
     },
@@ -102,6 +81,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
+        "platform": {
+            "php": "8.5.0"
+        },
         "allow-plugins": {
             "composer/installers": true,
             "cweagans/composer-patches": true,
@@ -113,6 +95,7 @@
             "php-http/discovery": true,
             "php-tuf/composer-integration": true,
             "phpstan/extension-installer": true,
+            "symfony/runtime": true,
             "tbachert/spi": true,
             "wikimedia/composer-merge-plugin": true
         },
@@ -178,9 +161,6 @@
             ]
         },
         "patches": {
-            "drupal/ckeditor_details": {
-                "Optional name attribute and UI improvements (CKEditor 4/5)": "patches/ckeditor_details-name-attribute-and-ui.diff"
-            }
         },
         "drupal-lenient": {
             "allowed-list": []
@@ -189,12 +169,13 @@
     "require-dev": {
         "chi-teck/drupal-coder-extension": "^1.3",
         "drupal/coder": "^8.3",
-        "drupal/core-dev": "^11.2",
+        "drupal/core-dev": "^11.3.0",
         "drupal/responsive_image_debugger": "^1.1",
         "mglaman/phpstan-drupal": "^2.0",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-deprecation-rules": "^2.0",
-        "phpunit/phpunit": "^10.0"
+        "phpunit/phpunit": "^11.5",
+        "vincentlanglet/twig-cs-fixer": "^4.1"
     }
 }

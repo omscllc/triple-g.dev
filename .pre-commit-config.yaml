@@ -6,3 +6,28 @@ repos:
         args: ['--baseline', '.secrets.baseline']
         additional_dependencies: ['gibberish-detector']
 
+  - repo: local
+    hooks:
+      - id: drush-config-status
+        name: Check Drupal config is exported
+        entry: bash scripts/hooks/check-drush-config.sh
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: phpcs-staged
+        name: PHPCS staged PHP files
+        entry: vendor/bin/phpcs --standard=phpcs.xml
+        language: system
+        files: \.(php|module|inc|install|profile|theme)$
+      - id: phpstan
+        name: PHPStan (level 6)
+        entry: vendor/bin/phpstan analyse --memory-limit=1G --no-progress
+        language: system
+        files: \.(php|module|inc|install|profile|theme|neon)$
+        pass_filenames: false
+      - id: frontend-lint
+        name: Frontend lint (Stylelint + ESLint)
+        entry: npm run lint --silent
+        language: system
+        files: ^web/themes/custom/.*\.(scss|js)$|^(package\.json|eslint\.config\.mjs|\.stylelintrc.*)$
+        pass_filenames: false

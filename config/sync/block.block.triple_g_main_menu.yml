@@ -1,4 +1,4 @@
-uuid: 2419f233-1cc3-4fe6-a80d-5cc656556b96
+uuid: fb9591a8-32a5-48c8-974f-dbde4493fda6
 langcode: en
 status: true
 dependencies:
@@ -9,11 +9,11 @@ dependencies:
   theme:
     - triple_g
 _core:
-  default_config_hash: M3BwVJ6XUxzkw-DQ7Jq1UcYtMMTcjHHMKucuARBkqc4
+  default_config_hash: KWAiziL39uEzmOJEql_wbUP2RtqGceL3WM2CfxhMelE
 id: triple_g_main_menu
 theme: triple_g
-region: sidebar_first
-weight: -6
+region: primary_menu
+weight: 0
 provider: null
 plugin: 'system_menu_block:main'
 settings:
@@ -22,6 +22,6 @@ settings:
   label_display: '0'
   provider: system
   level: 1
-  depth: 4
+  depth: 2
   expand_all_items: true
 visibility: {  }

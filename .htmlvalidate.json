@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "html-validate:recommended",
+    "html-validate:a11y"
+  ],
+  "rules": {
+    "no-raw-characters": "off"
+  }
+}

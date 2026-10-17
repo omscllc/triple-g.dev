@@ -1,0 +1,4 @@
+name: "Triple G Error Pages"
+type: module
+description: "Provides themed HTML responses for server errors."
+core_version_requirement: ^11.3

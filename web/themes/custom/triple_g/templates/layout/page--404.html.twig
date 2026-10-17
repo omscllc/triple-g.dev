@@ -1,0 +1,33 @@
+{% embed 'triple_g:site-shell' with {} %}
+  {% block header %}
+    {{ include('@triple_g/templates/layout/page-header.html.twig') }}
+  {% endblock %}
+  {% block highlighted %}{{ page.highlighted }}{% endblock %}
+  {% block content %}
+    {% embed 'triple_g:error-page' with {
+      heading: 'Hmmm…'|t,
+      heading_hidden: '(404, page not found)'|t,
+      image: base_path ~ 'assets/triple-g-404.png',
+      image_alt: '404, page not found: a brass clockwork machine with gears'|t,
+      image_width: 1024,
+      image_height: 1024,
+    } %}
+    {% block message %}
+      <p class="error-page__message--left">{{ 'We can’t find that gizmo. That page isn’t on any shelf in the workshop. It may have been moved, retired, or never built at all.'|t }}</p>
+      <p>{{ 'Rummage through the parts bin or head back to the bench.'|t }}</p>
+    {% endblock %}
+      {% block search %}
+        {{ include('triple_g:search-form', {
+          action: path('view.search.page_1'),
+          input_id: 'error-page-search',
+        }, with_context: false) }}
+      {% endblock %}
+      {% block actions %}
+        <a class="error-page__link" href="{{ path('<front>') }}">{{ 'Back to the bench'|t }}</a>
+      {% endblock %}
+    {% endembed %}
+  {% endblock %}
+  {% block footer %}
+    {{ include('@triple_g/templates/layout/page-footer.html.twig') }}
+  {% endblock %}
+{% endembed %}

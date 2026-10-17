@@ -1,0 +1,73 @@
+$paper: oklch(93% 0.015 84.57deg);
+$ink: oklch(31.25% 0.0154 264.32deg);
+$brass: oklch(75% 0.0861 65.3deg);
+$copper: oklch(57% 0.0747 48.84deg);
+$bronze: oklch(49% 0.0786 64.05deg);
+$night: oklch(27% 0.018 240deg);
+$moonlight: oklch(92% 0.01 84.57deg);
+$brass-dark: oklch(79% 0.12 78deg);
+$copper-dark: oklch(76% 0.11 48.84deg);
+$bronze-dark: oklch(83% 0.08 72deg);
+
+@font-face {
+  font-family: Inter;
+  src: url("/core/modules/navigation/assets/fonts/inter-var.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Steamwreck;
+  src: url("/themes/custom/triple_g/fonts/Steamwreck-Italic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Lora;
+  src: url("/core/themes/olivero/fonts/lora/lora-v14-latin-regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Lora;
+  src: url("/core/themes/olivero/fonts/lora/lora-v14-latin-700.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+
+  --triple-g-color-paper: #{$night};
+  --triple-g-color-ink: #{$moonlight};
+  --triple-g-color-brass: #{$brass-dark};
+  --triple-g-color-copper: #{$copper-dark};
+  --triple-g-color-bronze: #{$bronze-dark};
+  --triple-g-font-ui: "Inter", sans-serif;
+  --triple-g-font-reading: "Lora", serif;
+  --triple-g-font-display: "Steamwreck", display;
+  --triple-g-gutter: clamp(1rem, 4vw, 5rem);
+}
+
+// From 64rem up, the gutter never drops below 5rem and never exceeds 25vw.
+@media (width >= 64rem) {
+  :root {
+    --triple-g-gutter: clamp(5rem, 6vw, 25vw);
+  }
+}
+
+:root[data-color-mode="light"] {
+  color-scheme: light;
+
+  --triple-g-color-paper: #{$paper};
+  --triple-g-color-ink: #{$ink};
+  --triple-g-color-brass: #{$brass};
+  --triple-g-color-copper: #{$copper};
+  --triple-g-color-bronze: #{$bronze};
+}

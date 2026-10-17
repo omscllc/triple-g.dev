@@ -1,0 +1,15 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Blog Post
+status: stable
+slots:
+  title:
+    title: Title
+    required: true
+  authored_on:
+    title: Authored On
+    required: true
+  body:
+    title: Article body
+    required: true
+  tags:
+    title: Tags

@@ -212,10 +212,31 @@ CRUSH.md
 /.npmrc
 /.cache_ggshield
 /web/libraries
-/web/assets
+
+/web/assets/*
+!/web/assets/triple-g-*.png
+
 /web/themes/custom/triple_g/css/triple_g.post.min.css
+/web/themes/custom/triple_g/components/**/*.css
+/web/themes/custom/triple_g/css/theme-tokens.css
+/web/themes/custom/triple_g/fonts/bungee-shade-latin-400-normal.woff2
 
 .lighthouseci/
 .lighthouseci/* # ignore everything in the folder
 
+.env
+.envrc
+/web/modules/contrib/resource_hints/tests/*
+/.notes/*
 
+# Tool caches (never commit)
+/.twig-cs-fixer.cache
+/.phpunit.result.cache
+/.phpcs-cache
+/.php-cs-fixer.cache
+/.stylelintcache
+/.eslintcache
+/.phpstan.cache
+/.sass-cache/
+/.cache/
+/graphify-out/

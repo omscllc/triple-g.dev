@@ -1,0 +1,17 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Search Form
+status: stable
+props:
+  type: object
+  required:
+    - action
+    - input_id
+  properties:
+    action:
+      type: string
+      title: Form action
+      description: URL of the search results page.
+    input_id:
+      type: string
+      title: Input ID
+      description: Unique id for the search input, so the label association stays valid when several forms share a page.

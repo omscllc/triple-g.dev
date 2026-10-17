@@ -1,14 +1,14 @@
-uuid: 246c4fd3-6857-41d3-b5dc-deddffddbf22
+uuid: 3eb56128-2b68-4b25-ab54-b0b5ea1917f7
 langcode: en
-status: false
+status: true
 dependencies:
   theme:
     - triple_g
 _core:
-  default_config_hash: n2Rplir5Q0wq8ix-qilvUX0ePi_lr9lHrCLFYq7OGzs
+  default_config_hash: ydSxdq7R66I8UMC460rOzlfzvlUL4VRbdwc6z9DWaUI
 id: triple_g_secondary_local_tasks
 theme: triple_g
-region: header
+region: highlighted
 weight: -2
 provider: null
 plugin: local_tasks_block

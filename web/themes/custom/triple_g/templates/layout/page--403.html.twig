@@ -1,0 +1,26 @@
+{% embed 'triple_g:site-shell' with {} %}
+  {% block header %}
+    {{ include('@triple_g/templates/layout/page-header.html.twig') }}
+  {% endblock %}
+  {% block highlighted %}{{ page.highlighted }}{% endblock %}
+  {% block content %}
+    {% embed 'triple_g:error-page' with {
+      heading: 'Hmmm…'|t,
+      heading_hidden: '(403, access denied)'|t,
+      image: base_path ~ 'assets/triple-g-403.png',
+      image_alt: '403, access denied: brass gears, steam and pressure gauges'|t,
+      image_width: 945,
+      image_height: 877,
+    } %}
+      {% block message %}
+        <p>{{ 'The door to the storage locker is stuck. Maybe the office could help.'|t }}</p>
+      {% endblock %}
+      {% block actions %}
+        <a class="error-page__link" href="{{ path('<front>') }}">{{ 'Check the office'|t }}</a>
+      {% endblock %}
+    {% endembed %}
+  {% endblock %}
+  {% block footer %}
+    {{ include('@triple_g/templates/layout/page-footer.html.twig') }}
+  {% endblock %}
+{% endembed %}

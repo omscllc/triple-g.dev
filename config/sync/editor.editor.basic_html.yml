@@ -1,4 +1,4 @@
-uuid: 657ac0dd-cc84-442b-9a09-7c3b211bd42f
+uuid: 765e8c2f-90cb-4d40-aeb1-a75111abbc68
 langcode: en
 status: true
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
   module:
     - ckeditor5
 _core:
-  default_config_hash: Qi2tIe-L97EutlMmhEvhsNxZOpOoA-RH82c4BQb5n4A
+  default_config_hash: JrKgrmvARpUBMILom2cUF4pz3mwrBnCYSlHjGwsKZ64
 format: basic_html
 editor: ckeditor5
 settings:
@@ -15,29 +15,20 @@ settings:
     items:
       - bold
       - italic
-      - underline
       - '|'
-      - specialCharacters
       - link
       - '|'
-      - alignment
-      - indent
-      - outdent
       - bulletedList
       - numberedList
       - '|'
       - blockQuote
       - drupalInsertImage
-      - drupalMedia
       - '|'
       - heading
+      - code
+      - '|'
+      - sourceEditing
   plugins:
-    ckeditor5_alignment:
-      enabled_alignments:
-        - center
-        - justify
-        - left
-        - right
     ckeditor5_heading:
       enabled_headings:
         - heading2
@@ -51,13 +42,21 @@ settings:
       properties:
         reversed: false
         startIndex: true
+        styles: true
       multiBlock: true
-    editor_advanced_link_link:
-      enabled_attributes:
-        - target
-        - title
-    media_media:
-      allow_view_mode_override: false
+    ckeditor5_sourceEditing:
+      allowed_tags:
+        - '<cite>'
+        - '<dl>'
+        - '<dt>'
+        - '<dd>'
+        - '<a hreflang>'
+        - '<blockquote cite>'
+        - '<h2 id>'
+        - '<h3 id>'
+        - '<h4 id>'
+        - '<h5 id>'
+        - '<h6 id>'
 image_upload:
   status: true
   scheme: public

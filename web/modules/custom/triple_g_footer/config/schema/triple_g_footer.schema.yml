@@ -1,0 +1,7 @@
+block.settings.triple_g_copyright_notice:
+  type: block_settings
+  label: 'Copyright notice block settings'
+  mapping:
+    copyright_text:
+      type: string
+      label: 'Copyright text'

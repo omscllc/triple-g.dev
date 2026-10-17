@@ -1,0 +1,24 @@
+uuid: 6fc07dfd-169f-4c99-abbb-c456244512e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.content_recent
+  module:
+    - views
+  theme:
+    - triple_g
+id: triple_g_recent_posts
+theme: triple_g
+region: sidebar_first
+weight: -10
+provider: null
+plugin: 'views_block:content_recent-block_1'
+settings:
+  id: 'views_block:content_recent-block_1'
+  label: 'Recent Posts'
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: 5
+visibility: {  }
