@@ -22,6 +22,7 @@ This document serves as the ground-truth directory, technical specification, and
 - **Access Denied (403):** `web/assets/triple-g-403.png`
 - **Server Error (500):** `web/assets/triple-g-500.png`
 - **Under Construction:** `web/assets/triple-g-underconstruction.png`
+- **Color-Mode Toggle Icons:** `web/assets/triple-g-icon-bulb-on.png` (lit Edison bulb; shown in dark mode, switches to light) and `web/assets/triple-g-icon-bulb-off.png` (unlit bulb; shown in light mode, switches to dark). 96×96 PNGs displayed at 24px.
 
 ## Core Drupal Data Model & Configuration Specifications
 1. **Content Type ('Blog Post'):**

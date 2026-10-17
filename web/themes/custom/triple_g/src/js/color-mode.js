@@ -2,17 +2,20 @@
   'use strict';
 
   const root = document.documentElement;
-  const colorScheme = window.matchMedia('(prefers-color-scheme: dark)');
   const storageKey = 'triple-g-color-mode';
   const toggleSelector = '[data-color-mode-toggle]';
 
   function getColorMode() {
-    return root.dataset.colorMode || (colorScheme.matches ? 'dark' : 'light');
+    return root.dataset.colorMode || 'dark';
   }
 
   function updateToggles(context = document) {
     context.querySelectorAll(toggleSelector).forEach((toggle) => {
-      toggle.setAttribute('aria-pressed', String(getColorMode() === 'dark'));
+      const targetMode = getColorMode() === 'dark' ? 'light' : 'dark';
+      toggle.dataset.colorModeTarget = targetMode;
+      const label = targetMode === 'dark' ? Drupal.t('Dark mode') : Drupal.t('Light mode');
+      toggle.setAttribute('aria-label', label);
+      toggle.dataset.tooltip = label;
     });
   }
 
@@ -35,27 +38,15 @@
           }
         }
         catch {
-          // Storage may be unavailable; the current page can still follow OS settings.
-        }
-
-        const updateFromSystemPreference = () => {
-          if (!root.hasAttribute('data-color-mode')) {
-            updateToggles();
-          }
-        };
-
-        if (typeof colorScheme.addEventListener === 'function') {
-          colorScheme.addEventListener('change', updateFromSystemPreference);
-        }
-        else {
-          colorScheme.addListener(updateFromSystemPreference);
+          // Storage may be unavailable; the current page can still use its selected mode.
         }
 
         root.dataset.colorModeReady = 'true';
       }
 
+      updateToggles(context);
+
       once('triple-g-color-mode-toggle', toggleSelector, context).forEach((toggle) => {
-        toggle.setAttribute('aria-pressed', String(getColorMode() === 'dark'));
         toggle.addEventListener('click', () => {
           const nextMode = getColorMode() === 'dark' ? 'light' : 'dark';
           root.dataset.colorMode = nextMode;

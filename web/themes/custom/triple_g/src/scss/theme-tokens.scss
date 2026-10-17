@@ -42,13 +42,13 @@ $bronze-dark: oklch(83% 0.08 72deg);
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
-  --triple-g-color-paper: #{$paper};
-  --triple-g-color-ink: #{$ink};
-  --triple-g-color-brass: #{$brass};
-  --triple-g-color-copper: #{$copper};
-  --triple-g-color-bronze: #{$bronze};
+  --triple-g-color-paper: #{$night};
+  --triple-g-color-ink: #{$moonlight};
+  --triple-g-color-brass: #{$brass-dark};
+  --triple-g-color-copper: #{$copper-dark};
+  --triple-g-color-bronze: #{$bronze-dark};
   --triple-g-font-ui: "Inter", sans-serif;
   --triple-g-font-reading: "Lora", serif;
   --triple-g-font-display: "Steamwreck", display;
@@ -62,24 +62,12 @@ $bronze-dark: oklch(83% 0.08 72deg);
   }
 }
 
-:root[data-color-mode="dark"] {
-  color-scheme: dark;
+:root[data-color-mode="light"] {
+  color-scheme: light;
 
-  --triple-g-color-paper: #{$night};
-  --triple-g-color-ink: #{$moonlight};
-  --triple-g-color-brass: #{$brass-dark};
-  --triple-g-color-copper: #{$copper-dark};
-  --triple-g-color-bronze: #{$bronze-dark};
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-color-mode]) {
-    color-scheme: dark;
-
-    --triple-g-color-paper: #{$night};
-    --triple-g-color-ink: #{$moonlight};
-    --triple-g-color-brass: #{$brass-dark};
-    --triple-g-color-copper: #{$copper-dark};
-    --triple-g-color-bronze: #{$bronze-dark};
-  }
+  --triple-g-color-paper: #{$paper};
+  --triple-g-color-ink: #{$ink};
+  --triple-g-color-brass: #{$brass};
+  --triple-g-color-copper: #{$copper};
+  --triple-g-color-bronze: #{$bronze};
 }

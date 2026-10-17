@@ -145,46 +145,63 @@ body {
   }
 
   &__theme-toggle {
+    position: relative;
     display: inline-flex;
+    width: 2.5rem;
+    height: 2.5rem;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.55rem 0;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
     border: 0;
-    border-block-end: 1px solid transparent;
+    border-radius: 50%;
     background: transparent;
-    color: var(--triple-g-color-ink);
-    font: inherit;
-    font-size: clamp(0.8rem, calc(0.78rem + 0.1vw), 0.9rem);
     cursor: pointer;
 
-    &:hover,
-    &:focus-visible {
-      border-block-end-color: var(--triple-g-color-copper);
+    &:hover .site-shell__theme-icon {
+      transform: scale(1.12);
     }
-  }
 
-  &__theme-switch {
-    position: relative;
-    width: 2rem;
-    height: 1.1rem;
-    border: 1px solid currentcolor;
-    border-radius: 1rem;
+    &:focus-visible {
+      outline: 2px solid var(--triple-g-color-copper);
+      outline-offset: 2px;
+    }
 
     &::after {
       position: absolute;
-      top: 0.14rem;
-      left: 0.14rem;
-      width: 0.7rem;
-      height: 0.7rem;
-      border-radius: 50%;
-      background: currentcolor;
-      content: "";
-      transition: transform 150ms ease;
+      z-index: 10;
+      top: calc(100% + 0.5rem);
+      right: 0;
+      padding: 0.3rem 0.6rem;
+      border-radius: 0.25rem;
+      opacity: 0;
+      background: var(--triple-g-color-ink);
+      color: var(--triple-g-color-paper);
+      content: attr(data-tooltip);
+      font-family: var(--triple-g-font-ui);
+      font-size: 0.8rem;
+      line-height: 1.2;
+      pointer-events: none;
+      transition: opacity 150ms ease;
+      white-space: nowrap;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      opacity: 1;
+    }
+
+    &[data-color-mode-target="light"] .site-shell__theme-icon--dark,
+    &[data-color-mode-target="dark"] .site-shell__theme-icon--light {
+      display: none;
     }
   }
 
-  &__theme-toggle[aria-pressed="true"] &__theme-switch::after {
-    transform: translateX(0.85rem);
+  &__theme-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    flex: 0 0 auto;
+    transition: transform 150ms ease;
   }
 
   &__account {

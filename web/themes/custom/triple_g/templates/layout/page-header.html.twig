@@ -20,9 +20,9 @@
       }, with_context: false) }}
       <ul class="site-shell__theme-menu">
         <li>
-          <button class="site-shell__theme-toggle" type="button" data-color-mode-toggle aria-pressed="false">
-            <span>{{ 'Dark mode'|t }}</span>
-            <span class="site-shell__theme-switch" aria-hidden="true"></span>
+          <button class="site-shell__theme-toggle" type="button" data-color-mode-toggle data-color-mode-target="light" aria-label="{{ 'Light mode'|t }}" data-tooltip="{{ 'Light mode'|t }}">
+            <img class="site-shell__theme-icon site-shell__theme-icon--light" src="{{ base_path }}assets/triple-g-icon-bulb-on.png" alt="" width="28" height="28">
+            <img class="site-shell__theme-icon site-shell__theme-icon--dark" src="{{ base_path }}assets/triple-g-icon-bulb-off.png" alt="" width="28" height="28">
           </button>
         </li>
       </ul>
