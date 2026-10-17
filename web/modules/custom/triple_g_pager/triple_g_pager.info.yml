@@ -1,0 +1,6 @@
+name: Triple G Pager
+type: module
+description: 'Translates Drupal''s zero-based ?page=N pager into one-based URLs on front-end listings.'
+core_version_requirement: ^11.3
+dependencies:
+  - drupal:views

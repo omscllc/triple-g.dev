@@ -1,15 +1,15 @@
-uuid: 2d1b1e85-da0e-4239-8070-db270ba70562
+uuid: 0a9e29e0-d663-429e-9f59-06a9257e8803
 langcode: en
 status: true
 dependencies:
   theme:
     - triple_g
 _core:
-  default_config_hash: iSqWHk_ODnffB8oY_E1-ZR36Q3SjuX2jj-NOOAVpqYQ
+  default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
 id: triple_g_page_title
 theme: triple_g
-region: content
-weight: -4
+region: header
+weight: -5
 provider: null
 plugin: page_title_block
 settings:

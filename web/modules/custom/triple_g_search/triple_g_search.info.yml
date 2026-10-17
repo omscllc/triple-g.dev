@@ -1,0 +1,7 @@
+name: Triple G Search
+type: module
+description: 'Bridges the public ?q= search parameter into the search View fulltext filter.'
+core_version_requirement: ^11.3
+dependencies:
+  - drupal:views
+  - search_api:search_api

@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    autoconfigure: true
+  Drupal\triple_g_pager\PagerTranslator:
+    arguments: ['@router.admin_context']
+  Drupal\triple_g_pager\EventSubscriber\PagerRequestSubscriber:
+    arguments: ['@Drupal\triple_g_pager\PagerTranslator']
+  Drupal\triple_g_pager\Hook\PagerHooks:
+    arguments: ['@Drupal\triple_g_pager\PagerTranslator', '@current_route_match']

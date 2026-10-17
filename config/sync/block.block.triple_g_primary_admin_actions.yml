@@ -1,15 +1,15 @@
-uuid: 7d9be52b-f010-4e5a-bbb2-5ddfb085794b
+uuid: 56f82c8c-ae15-4236-bfaf-cc72542ae266
 langcode: en
-status: false
+status: true
 dependencies:
   theme:
     - triple_g
 _core:
-  default_config_hash: 7tjVdwfc7Hhb0DFiLhJY9v_f220_B9r5K3A8oB2ayVo
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
 id: triple_g_primary_admin_actions
 theme: triple_g
-region: header
-weight: -4
+region: highlighted
+weight: -5
 provider: null
 plugin: local_actions_block
 settings:

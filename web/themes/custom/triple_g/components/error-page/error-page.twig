@@ -1,0 +1,16 @@
+<section class="error-page">
+  <img class="error-page__image" src="{{ image }}" alt="{{ image_alt }}"{% if image_width and image_height %} width="{{ image_width }}" height="{{ image_height }}"{% endif %}>
+  <div class="error-page__body">
+    <h1 class="error-page__heading">{{ heading }}{% if heading_hidden %} <span class="error-page__heading-hidden">{{ heading_hidden }}</span>{% endif %}</h1>
+    <div class="error-page__message">
+      {% block message %}{% endblock %}
+    </div>
+    {% set search_markup %}{% block search %}{% endblock %}{% endset %}
+    {% if search_markup|trim %}
+      <div class="error-page__search">{{ search_markup }}</div>
+    {% endif %}
+    <p class="error-page__actions">
+      {% block actions %}{% endblock %}
+    </p>
+  </div>
+</section>

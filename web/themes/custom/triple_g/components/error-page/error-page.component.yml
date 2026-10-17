@@ -1,0 +1,40 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Error Page
+status: stable
+props:
+  type: object
+  required:
+    - heading
+    - image
+    - image_alt
+  properties:
+    heading:
+      type: string
+      title: Heading
+      description: Text of the page's single h1.
+    heading_hidden:
+      type: string
+      title: Hidden heading text
+      description: Extra text appended to the h1 for screen readers only.
+    image:
+      type: string
+      title: Image URL
+    image_alt:
+      type: string
+      title: Image alternative text
+    image_width:
+      type: integer
+      title: Image intrinsic width
+    image_height:
+      type: integer
+      title: Image intrinsic height
+slots:
+  message:
+    title: Message
+    description: One or more paragraphs explaining the error.
+  search:
+    title: Search
+    description: Optional search form shown between the message and the actions.
+  actions:
+    title: Actions
+    description: Links offering a way forward.
