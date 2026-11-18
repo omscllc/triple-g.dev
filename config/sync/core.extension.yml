@@ -30,6 +30,10 @@ module:
   media_library: 0
   menu_link_content: 0
   menu_ui: 0
+  metatag: 0
+  metatag_open_graph: 0
+  metatag_simple_widget: 0
+  metatag_twitter_cards: 0
   mysql: 0
   navigation: 0
   node: 0
@@ -40,6 +44,7 @@ module:
   redis: 0
   search_api: 0
   search_api_db: 0
+  seostudio: 0
   system: 0
   tagclouds: 0
   taxonomy: 0
