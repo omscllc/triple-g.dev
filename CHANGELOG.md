@@ -1,5 +1,10 @@
 # GEEK'S GADGETS AND GIZMOS CHANGELOG
 
+## 2.0.1
+  - Upgraded to Drupal 11.4.12
+  - Installed Metatag, SEOStudio, Metatag Simple Widget, Metatag Open Graph, and Metatag Twitter Cards
+  - Upgraded modules
+
 ## 2.0.0
   - New theme
   - Introduced the Triple G Pager module to translate Drupal's zero-based pager into one-based URLs.

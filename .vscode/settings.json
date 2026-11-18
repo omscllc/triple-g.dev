@@ -75,6 +75,8 @@
   },
   // --- Auto-Format on Save ---
   "editor.formatOnSave": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit"
@@ -87,6 +89,9 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[php]": {
+    "editor.formatOnSave": false
   },
   "chat.tools.terminal.autoApprove": {
     "/^php -v$/": {

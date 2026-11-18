@@ -22,12 +22,13 @@ RUN apk update && apk add --no-cache \
     zlib-dev \
     libpng-dev \
     libjpeg-turbo-dev \
+    libwebp-dev \
     freetype-dev \
     libavif-dev \
     oniguruma-dev \
     mysql-client \
     libxml2-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg --with-avif \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp --with-avif \
     && docker-php-ext-install -j"$(nproc)" \
     pdo_mysql \
     mysqli \

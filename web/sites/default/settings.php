@@ -64,8 +64,19 @@ $databases['default']['default'] = [
   'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
 ];
 
+$settings['enable_html5_validation'] = TRUE;
 
 $settings['hash_salt'] = $_ENV['HASH_SALT'];
+
+$settings['trusted_host_patterns'] = [
+  '^triple-g\.dev$',
+  '^localhost$',
+  '^triple-g\.local$',
+  '^triple-g\.casa$',
+  '^triple-g\.website$',
+  '^dev\.triple-g\.dev$',
+  '^stg\.triple-g\.dev$',
+];
 
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
